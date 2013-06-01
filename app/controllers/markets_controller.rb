@@ -3,8 +3,11 @@ class MarketsController < ApplicationController
   respond_to :json, :html
 
   def index
-    if params[:lat].present? && params[:long].present?
-      distance = params[:distance].present? ? params[:distance] : 10
+    distance = params[:distance].present? ? params[:distance] : 10
+    if params[:zip].present?
+      coordinates = Geocoder.coordinates(params[:zip])
+      @markets = Market.get_markets_near_me(coordinates[0], coordinates[1], distance)
+    elsif params[:lat].present? && params[:long].present?
       @markets = Market.get_markets_near_me(params[:lat], params[:long], distance)
     else
       @markets = Market.limit(40).all
