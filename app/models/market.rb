@@ -1,7 +1,8 @@
 class Market < ActiveRecord::Base
   attr_accessible :bakedgoods, :cheese, :city, :county, :crafts, :credit, :eggs, :flowers, :fmid, :herbs, :honey, :jams,
   								:location, :maple, :market_name, :meat, :nursery, :nuts, :plants, :poultry, :prepared, :schedule, :seafood,
-  								:sfmnp, :snap, :soap, :state, :street, :trees, :update_time, :vegetables, :website, :wic, :wic_cash, :wine, :x, :y, :zip
+  								:sfmnp, :snap, :soap, :state, :street, :trees, :update_time, :vegetables, :website, :wic, :wic_cash, :wine,
+  								:x, :y, :zip, :food_products
 
   has_many :market_food_products
   has_many :food_products, :through => :market_food_products
@@ -11,7 +12,7 @@ class Market < ActiveRecord::Base
   geocoded_by :full_street_address  # can also be an IP address
 	after_validation :geocode          # auto-fetch coordinates
 
-	reverse_geocoded_by :y, :x
+	reverse_geocoded_by :y, :x, :address => :location
 	after_validation :reverse_geocode  # auto-fetch address
 
 	def full_street_address
