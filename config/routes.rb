@@ -7,6 +7,10 @@ GrubbioWeb::Application.routes.draw do
               }
 
   resources :users
+  
+  resources :businesses do
+    resource :business_profiles
+  end
 
   resources :markets
 
@@ -14,6 +18,9 @@ GrubbioWeb::Application.routes.draw do
   
   root :to => 'pages#index'
 
+  resources :product_categories do
+    resources :food_products
+  end
 
-
+  root :to => 'pages#index'
 end
