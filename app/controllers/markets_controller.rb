@@ -2,8 +2,12 @@ class MarketsController < ApplicationController
   # GET /markets
   # GET /markets.json
   def index
-    @markets = Market.all
-
+    if params[:lat].present? && params[:long].present?
+      distance = params[:distance].present? ? params[:distance] : 10
+      @markets = Market.get_markets_near_me(params[:lat], params[:long], distance)
+    else
+      @markets = Market.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @markets }
