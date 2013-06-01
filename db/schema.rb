@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601192545) do
+ActiveRecord::Schema.define(:version => 20130601194819) do
 
   create_table "business_profile_food_products", :force => true do |t|
     t.integer  "business_profile_id"
@@ -29,10 +29,13 @@ ActiveRecord::Schema.define(:version => 20130601192545) do
 
   create_table "business_profiles", :force => true do |t|
     t.integer  "business_id"
-    t.string   "producer_types"
-    t.string   "customer_types"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
   end
 
   create_table "businesses", :force => true do |t|

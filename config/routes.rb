@@ -9,7 +9,7 @@ GrubbioWeb::Application.routes.draw do
   resources :users
   
   resources :businesses do
-    resource :business_profiles
+    resource :business_profile
   end
 
   resources :markets

@@ -21,3 +21,7 @@ csv.each do |row|
 		end
 	end
 end
+
+%w(Produce Meat Dairy Poultry Processed Seafood).each do |category|
+  ProductCategory.create(:name => category)
+end
