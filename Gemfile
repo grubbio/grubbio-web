@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 gem 'pg'
+gem 'pry'
 
 gem 'devise'
 gem "geocoder", "~> 1.1.8"
@@ -15,7 +16,3 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-group :development do
-	gem 'pry'
-end
