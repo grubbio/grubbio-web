@@ -18,10 +18,12 @@ class Users::RegistrationsController < DeviseController
     if resource.save
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
-        respond_with resource, location: nil
       else
         expire_session_data_after_sign_in!
-        respond_with resource, location: nil
+      end
+      respond_to do |format|  
+        format.html { respond_with resource, location: resource }  
+        format.json { return render json: { user: resource } }  
       end
     else
       puts resource.errors.full_messages

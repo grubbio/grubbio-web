@@ -17,7 +17,10 @@ class Users::SessionsController < DeviseController
   def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
-    respond_with resource, location: nil
+    respond_to do |format|  
+      format.html { respond_with resource, location: resource }  
+      format.json { return render json: { user: resource } }  
+    end
   end
 
   def destroy
