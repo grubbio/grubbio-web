@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601194819) do
+ActiveRecord::Schema.define(:version => 20130601224453) do
 
   create_table "business_profile_food_products", :force => true do |t|
     t.integer  "business_profile_id"
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(:version => 20130601194819) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "seasons", :force => true do |t|
+    t.integer  "food_product_id"
+    t.string   "state"
+    t.date     "month"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -126,6 +134,10 @@ ActiveRecord::Schema.define(:version => 20130601194819) do
     t.string   "raw_location"
     t.float    "lat"
     t.float    "lng"
+    t.string   "address_state"
+    t.string   "address_city"
+    t.string   "address_street"
+    t.integer  "address_zip"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

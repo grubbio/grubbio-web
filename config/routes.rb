@@ -16,7 +16,8 @@ GrubbioWeb::Application.routes.draw do
 
   resources :food_products
   
-  root :to => 'pages#index'
+  match '/food', to: 'food#index'
+  match '/food/:id/:name', to: 'food#show'
 
   resources :product_categories do
     resources :food_products
