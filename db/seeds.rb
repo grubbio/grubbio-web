@@ -14,8 +14,10 @@ csv_text.encode('UTF-8')
 #puts "text: #{csv_text}"
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
-	puts "row.to_hash: #{row.to_hash}"
-	unless Market.exists?(row.to_hash["fmid"])
-	  Market.create!(row.to_hash)
+	if row.to_hash["state"] == "Colorado"
+		puts row.to_hash
+		unless Market.exists?(row.to_hash["fmid"])
+		  Market.create!(row.to_hash)
+		end
 	end
 end
