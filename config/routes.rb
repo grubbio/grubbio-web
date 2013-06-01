@@ -8,6 +8,9 @@ GrubbioWeb::Application.routes.draw do
 
   resources :users
 
+  resources :markets
   root :to => 'pages#index'
+
+
 
 end
