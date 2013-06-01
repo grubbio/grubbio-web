@@ -1,48 +1,31 @@
 class MarketsController < ApplicationController
-  # GET /markets
-  # GET /markets.json
+
+  respond_to :json, :html
+
   def index
     if params[:lat].present? && params[:long].present?
       distance = params[:distance].present? ? params[:distance] : 10
       @markets = Market.get_markets_near_me(params[:lat], params[:long], distance)
     else
-      @markets = Market.all
+      @markets = Market.limit(40).all
     end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @markets }
-    end
+    respond_with @markets
   end
 
-  # GET /markets/1
-  # GET /markets/1.json
   def show
     @market = Market.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @market }
-    end
+    respond_with @market
   end
 
-  # GET /markets/new
-  # GET /markets/new.json
   def new
     @market = Market.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @market }
-    end
   end
 
-  # GET /markets/1/edit
   def edit
     @market = Market.find(params[:id])
   end
 
-  # POST /markets
-  # POST /markets.json
   def create
     @market = Market.new(params[:market])
 
@@ -57,8 +40,6 @@ class MarketsController < ApplicationController
     end
   end
 
-  # PUT /markets/1
-  # PUT /markets/1.json
   def update
     @market = Market.find(params[:id])
 
@@ -73,8 +54,6 @@ class MarketsController < ApplicationController
     end
   end
 
-  # DELETE /markets/1
-  # DELETE /markets/1.json
   def destroy
     @market = Market.find(params[:id])
     @market.destroy
