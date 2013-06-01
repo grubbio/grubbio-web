@@ -10,7 +10,7 @@ class MarketsController < ApplicationController
     elsif params[:lat].present? && params[:long].present?
       @markets = Market.get_markets_near_me(params[:lat], params[:long], distance)
     else
-      @markets = Market.limit(40).all
+      @markets = Market.paginate(page: params[:page], per_page: 30)
     end
     respond_with @markets
   end
