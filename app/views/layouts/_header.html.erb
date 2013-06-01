@@ -1,0 +1,16 @@
+<section id="site-head">
+	<div class="pre-nav">
+		<span>
+			<% if user_signed_in? %>
+				currently signed in as: <%= current_user.email %> | 
+				<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= link_to "Login", new_user_session_path %></span>
+			<% end %>
+			<!--  not sure if we have a producer login separate from user <span><a href="#">Producer Login</a>  !-->
+		</span>
+	</div>
+	<nav class="main-nav">
+		<h1><a href="/">Grubbio</a> <span>your local source</span></h1>
+	</nav>
+</section>
