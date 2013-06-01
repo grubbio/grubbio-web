@@ -1,0 +1,32 @@
+<h1>Business</h1>
+
+<p>Setup your business here.</p>
+
+<p><%= link_to "New Business", new_business_path %></p>
+
+<% if @businesses && @businesses.size > 0 %>
+  <table>
+    <tr>
+      <th>
+        <strong>Name</strong>
+      </th>
+      <th>
+        <strong>Description</strong>
+      </th>
+      <th>
+        <strong>Actions</strong>
+      </th>
+    </tr>
+    <% @businesses.each do |business| %>
+      <tr>
+        <td><%= business.name %></td>
+        <td><%= business.description %></td>
+        <td>
+          <%= link_to "Add Profile", "#" %> |
+          <%= link_to "Edit", edit_business_path(business) %>
+          <%#= link_to "Delete", {action: :destroy}, :confirm => "Are you sure?" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
