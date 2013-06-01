@@ -6,6 +6,8 @@ GrubbioWeb::Application.routes.draw do
                 sessions: "users/sessions"
               }
 
+  resources :users
+
   root :to => 'pages#index'
 
 end
