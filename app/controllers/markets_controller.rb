@@ -7,7 +7,7 @@ class MarketsController < ApplicationController
       distance = params[:distance].present? ? params[:distance] : 10
       @markets = Market.get_markets_near_me(params[:lat], params[:long], distance)
     else
-      @markets = Market.limit(40).all
+      @markets = Market.paginate(page: params[:page], per_page: 30)
     end
     respond_with @markets
   end
