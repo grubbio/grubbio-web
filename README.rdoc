@@ -1,1 +1,25 @@
 == Documentation
+
+*User Creation*
+
+POST "/users" datatype: JSON
+{'user':{'email':'example@example.com','password':'example','password_confirmation':'example'}}
+
+example curl:
+
+curl -v -H "Content-Type: application/json" -X POST -d '{"user":{"email":"example@example.com","password":"example","password_confirmation":"example"}}' http://localhost:3000/users.json
+
+
+*User Registration*
+
+POST "/users/sign_in.json" datatype: JSON
+{'user':{'email':'example@example.com','password':'example'}}
+
+
+example curl:
+
+curl -v -H "Content-Type: application/json" -X POST -d '{"user":{"email":"example@example.com","password":"example"}}' http://localhost:3000/users/sign_in.json
+
+
+
+=== PROD URL:  grubbio.herokuapp.com

@@ -2,14 +2,14 @@ class Users::SessionsController < DeviseController
   
   prepend_view_path "app/views/users"
   
-  prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
-  prepend_before_filter :allow_params_authentication!, :only => :create
+  prepend_before_filter :require_no_authentication, only: [ :new, :create ]
+  prepend_before_filter :allow_params_authentication!, only: :create
   prepend_before_filter { request.env["devise.skip_timeout"] = true }
 
   respond_to :html, :json
 
   def new
-    self.resource = build_resource(nil, :unsafe => true)
+    self.resource = build_resource(nil, unsafe: true)
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource))
   end
@@ -17,7 +17,7 @@ class Users::SessionsController < DeviseController
   def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
-    respond_with resource
+    respond_with resource, location: nil
   end
 
   def destroy
@@ -35,11 +35,11 @@ class Users::SessionsController < DeviseController
     methods = resource_class.authentication_keys.dup
     methods = methods.keys if methods.is_a?(Hash)
     methods << :password if resource.respond_to?(:password)
-    { :methods => methods, :only => [:password] }
+    { methods: methods, only: [:password] }
   end
 
   def auth_options
-    { :scope => resource_name, :recall => "#{controller_path}#new" }
+    { scope: resource_name, recall: "#{controller_path}#new" }
   end
   
 end
