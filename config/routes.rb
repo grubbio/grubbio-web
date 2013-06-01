@@ -13,6 +13,9 @@ GrubbioWeb::Application.routes.draw do
   end
 
   resources :markets
+
+  resources :food_products
+  
   root :to => 'pages#index'
 
   resources :product_categories do

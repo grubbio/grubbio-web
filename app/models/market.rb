@@ -3,6 +3,11 @@ class Market < ActiveRecord::Base
   								:location, :maple, :market_name, :meat, :nursery, :nuts, :plants, :poultry, :prepared, :schedule, :seafood,
   								:sfmnp, :snap, :soap, :state, :street, :trees, :update_time, :vegetables, :website, :wic, :wic_cash, :wine, :x, :y, :zip
 
+  has_many :market_food_products
+  has_many :food_products, :through => :market_food_products
+
+  accepts_nested_attributes_for :food_products
+
   geocoded_by :full_street_address  # can also be an IP address
 	after_validation :geocode          # auto-fetch coordinates
 
