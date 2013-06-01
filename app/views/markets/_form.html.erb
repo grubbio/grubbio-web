@@ -1,0 +1,169 @@
+<%= form_for(@market) do |f| %>
+  <% if @market.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@market.errors.count, "error") %> prohibited this market from being saved:</h2>
+
+      <ul>
+      <% @market.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fmid %><br />
+    <%= f.number_field :fmid %>
+  </div>
+  <div class="field">
+    <%= f.label :market_name %><br />
+    <%= f.text_field :market_name %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :county %><br />
+    <%= f.text_field :county %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :schedule %><br />
+    <%= f.text_field :schedule %>
+  </div>
+  <div class="field">
+    <%= f.label :x %><br />
+    <%= f.text_field :x %>
+  </div>
+  <div class="field">
+    <%= f.label :y %><br />
+    <%= f.text_field :y %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br />
+    <%= f.text_field :credit %>
+  </div>
+  <div class="field">
+    <%= f.label :wic %><br />
+    <%= f.text_field :wic %>
+  </div>
+  <div class="field">
+    <%= f.label :wic_cash %><br />
+    <%= f.text_field :wic_cash %>
+  </div>
+  <div class="field">
+    <%= f.label :sfmnp %><br />
+    <%= f.text_field :sfmnp %>
+  </div>
+  <div class="field">
+    <%= f.label :snap %><br />
+    <%= f.text_field :snap %>
+  </div>
+  <div class="field">
+    <%= f.label :bakedgoods %><br />
+    <%= f.text_field :bakedgoods %>
+  </div>
+  <div class="field">
+    <%= f.label :cheese %><br />
+    <%= f.text_field :cheese %>
+  </div>
+  <div class="field">
+    <%= f.label :crafts %><br />
+    <%= f.text_field :crafts %>
+  </div>
+  <div class="field">
+    <%= f.label :flowers %><br />
+    <%= f.text_field :flowers %>
+  </div>
+  <div class="field">
+    <%= f.label :eggs %><br />
+    <%= f.text_field :eggs %>
+  </div>
+  <div class="field">
+    <%= f.label :seafood %><br />
+    <%= f.text_field :seafood %>
+  </div>
+  <div class="field">
+    <%= f.label :herbs %><br />
+    <%= f.text_field :herbs %>
+  </div>
+  <div class="field">
+    <%= f.label :vegetables %><br />
+    <%= f.text_field :vegetables %>
+  </div>
+  <div class="field">
+    <%= f.label :honey %><br />
+    <%= f.text_field :honey %>
+  </div>
+  <div class="field">
+    <%= f.label :jams %><br />
+    <%= f.text_field :jams %>
+  </div>
+  <div class="field">
+    <%= f.label :maple %><br />
+    <%= f.text_field :maple %>
+  </div>
+  <div class="field">
+    <%= f.label :meat %><br />
+    <%= f.text_field :meat %>
+  </div>
+  <div class="field">
+    <%= f.label :nursery %><br />
+    <%= f.text_field :nursery %>
+  </div>
+  <div class="field">
+    <%= f.label :nuts %><br />
+    <%= f.text_field :nuts %>
+  </div>
+  <div class="field">
+    <%= f.label :plants %><br />
+    <%= f.text_field :plants %>
+  </div>
+  <div class="field">
+    <%= f.label :poultry %><br />
+    <%= f.text_field :poultry %>
+  </div>
+  <div class="field">
+    <%= f.label :prepared %><br />
+    <%= f.text_field :prepared %>
+  </div>
+  <div class="field">
+    <%= f.label :soap %><br />
+    <%= f.text_field :soap %>
+  </div>
+  <div class="field">
+    <%= f.label :trees %><br />
+    <%= f.text_field :trees %>
+  </div>
+  <div class="field">
+    <%= f.label :wine %><br />
+    <%= f.text_field :wine %>
+  </div>
+  <div class="field">
+    <%= f.label :update_time %><br />
+    <%= f.text_field :update_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,97 @@
+<h1>Listing markets</h1>
+
+<table>
+  <tr>
+    <th>Fmid</th>
+    <th>Market name</th>
+    <th>Website</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>County</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Schedule</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Location</th>
+    <th>Credit</th>
+    <th>Wic</th>
+    <th>Wic cash</th>
+    <th>Sfmnp</th>
+    <th>Snap</th>
+    <th>Bakedgoods</th>
+    <th>Cheese</th>
+    <th>Crafts</th>
+    <th>Flowers</th>
+    <th>Eggs</th>
+    <th>Seafood</th>
+    <th>Herbs</th>
+    <th>Vegetables</th>
+    <th>Honey</th>
+    <th>Jams</th>
+    <th>Maple</th>
+    <th>Meat</th>
+    <th>Nursery</th>
+    <th>Nuts</th>
+    <th>Plants</th>
+    <th>Poultry</th>
+    <th>Prepared</th>
+    <th>Soap</th>
+    <th>Trees</th>
+    <th>Wine</th>
+    <th>Update time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @markets.each do |market| %>
+  <tr>
+    <td><%= market.fmid %></td>
+    <td><%= market.market_name %></td>
+    <td><%= market.website %></td>
+    <td><%= market.street %></td>
+    <td><%= market.city %></td>
+    <td><%= market.county %></td>
+    <td><%= market.state %></td>
+    <td><%= market.zip %></td>
+    <td><%= market.schedule %></td>
+    <td><%= market.x %></td>
+    <td><%= market.y %></td>
+    <td><%= market.location %></td>
+    <td><%= market.credit %></td>
+    <td><%= market.wic %></td>
+    <td><%= market.wic_cash %></td>
+    <td><%= market.sfmnp %></td>
+    <td><%= market.snap %></td>
+    <td><%= market.bakedgoods %></td>
+    <td><%= market.cheese %></td>
+    <td><%= market.crafts %></td>
+    <td><%= market.flowers %></td>
+    <td><%= market.eggs %></td>
+    <td><%= market.seafood %></td>
+    <td><%= market.herbs %></td>
+    <td><%= market.vegetables %></td>
+    <td><%= market.honey %></td>
+    <td><%= market.jams %></td>
+    <td><%= market.maple %></td>
+    <td><%= market.meat %></td>
+    <td><%= market.nursery %></td>
+    <td><%= market.nuts %></td>
+    <td><%= market.plants %></td>
+    <td><%= market.poultry %></td>
+    <td><%= market.prepared %></td>
+    <td><%= market.soap %></td>
+    <td><%= market.trees %></td>
+    <td><%= market.wine %></td>
+    <td><%= market.update_time %></td>
+    <td><%= link_to 'Show', market %></td>
+    <td><%= link_to 'Edit', edit_market_path(market) %></td>
+    <td><%= link_to 'Destroy', market, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Market', new_market_path %>
