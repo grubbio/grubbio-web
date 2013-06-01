@@ -1,5 +1,39 @@
-oh hai. welcome to index.
+<section id="uber-search">
+	<%= render partial: "search/bar" %>
+</section>
 
-<h1>Businesses</h1>
+<section id="in-season">
+	<h2>Popular Searches</h2>
+	<div class="pure-g-r vertical-margin">
+		<div class="pure-u-1-3">
+			<%= image_tag "peaches.jpg", :style => "width: 300px;", :alt => "Peaches" %>
+		</div>
+		<div class="pure-u-1-3">
+			<%= image_tag "beets.jpg", :style => "width: 300px;", :alt => "Beets" %>
+		</div>
+		<div class="pure-u-1-3">
+			<%= image_tag "squash.jpg", :style => "width: 300px;", :alt => "Squash" %>			
+		</div>
+	</div>
+	
+	<div class="pure-g-r">
+		<div class="pure-u-1-3">
+			<%= image_tag "carrots.jpg", :style => "width: 300px;", :alt => "Carrots" %>
+		</div>
+		<div class="pure-u-1-3">
+			<%= image_tag "peppers.jpg", :style => "width: 300px;", :alt => "Peppers" %>
+		</div>
+		<div class="pure-u-1-3">
+			<%= image_tag "radishes.jpg", :style => "width: 300px;", :alt => "Radishes" %>
+		</div>
+	</div>
+</section>
 
-<%= link_to "Setup A Business", businesses_path %>
+<section id="for-producers">
+	<h2>Are you a Producer?</h2>
+	<div>
+		<span style='font-size: 18px;'>
+			Show off your grub! <%= link_to "Setup A Producer Profile", businesses_path %>
+		</span>
+	</div>
+</section>
