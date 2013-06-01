@@ -11,7 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601165209) do
+ActiveRecord::Schema.define(:version => 20130601175241) do
+
+  create_table "business_profile_food_products", :force => true do |t|
+    t.integer  "business_profile_id"
+    t.integer  "food_product_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "business_profile_product_categories", :force => true do |t|
+    t.integer  "business_profile_id"
+    t.integer  "product_category_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "business_profiles", :force => true do |t|
+    t.integer  "business_id"
+    t.string   "producer_types"
+    t.string   "customer_types"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "businesses", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "food_products", :force => true do |t|
+    t.integer  "product_category_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "markets", :primary_key => "fmid", :force => true do |t|
     t.string   "market_name"
@@ -55,7 +92,12 @@ ActiveRecord::Schema.define(:version => 20130601165209) do
     t.text     "schedule"
   end
 
-ActiveRecord::Schema.define(:version => 20130601150820) do
+  create_table "product_categories", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
