@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601175241) do
+ActiveRecord::Schema.define(:version => 20130601192229) do
 
   create_table "business_profile_food_products", :force => true do |t|
     t.integer  "business_profile_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130601175241) do
     t.string   "description"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "zip_code"
   end
 
   create_table "markets", :primary_key => "fmid", :force => true do |t|
