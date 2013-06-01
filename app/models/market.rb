@@ -12,7 +12,7 @@ class Market < ActiveRecord::Base
   geocoded_by :full_street_address  # can also be an IP address
 	after_validation :geocode          # auto-fetch coordinates
 
-	reverse_geocoded_by :y, :x, :address => :location
+	reverse_geocoded_by :y, :x, :address => :street
 	after_validation :reverse_geocode  # auto-fetch address
 
 	def full_street_address
