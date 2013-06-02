@@ -1,0 +1,40 @@
+<h2>Edit Profile for <%= @business.name %></h2>
+
+<%= form_for [@business, @business_profile], :url => business_business_profile_path(@business), :method => :put do |f| %>
+  <p>What do you generally produce?</p>
+  <% @product_categories.each do |category| %>
+    <div class="field">
+      <% checked = @business_profile.product_categories.map(&:name).include?(category.name.capitalize) ? true : false %>
+      <%= check_box_tag("product_category[#{category.name.underscore}]", category.id.to_s, checked) %> <%= category.name %><br/>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address1 %><br/>
+    <%= f.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address2 %><br/>
+    <%= f.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br/>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %><br/>
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip_code %><br/>
+    <%= f.text_field :zip_code %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

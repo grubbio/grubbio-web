@@ -27,16 +27,26 @@ class BusinessProfilesController < ApplicationController
   end
   
   def edit
-    business = Business.find(params[:business_id])
-    @business_profile = business.business_profile
+    @business = Business.find(params[:business_id])
+    @business_profile = @business.business_profile
+    @product_categories = ProductCategory.all.sort { |a, b| a.name <=> b.name }
   end
 
-  def updated
+  def update
     business = Business.find(params[:business_id])
     @business_profile = business.business_profile
 
     if @business_profile.update_attributes(params[:business_profile])
-      redirect_to action: show, business: business
+      if params["product_category"]
+        params["product_category"].each do |category|
+          binding.pry
+          unless @business_profile.product_categories.map(&:name).include?(params["product_category"][category[1]])
+            @business_profile.product_categories << ProductCategory.find(params["product_category"][category[0]])
+          end
+        end
+      end
+
+      redirect_to action: :show
     end
   end
 

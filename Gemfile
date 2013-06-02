@@ -21,3 +21,9 @@ end
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "rails3-jquery-autocomplete"
+
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-remote'
+end
