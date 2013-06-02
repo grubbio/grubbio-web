@@ -1,4 +1,4 @@
-<% if current_user.state_located? %>
+<% if user_signed_in? && current_user.state_located? %>
   <section id="uber-search">
       <%= render partial: 'markets/search' %>
   </section>
