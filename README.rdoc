@@ -23,3 +23,16 @@ curl -v -H "Content-Type: application/json" -X POST -d '{"user":{"email":"exampl
 
 
 === PROD URL:  grubbio.herokuapp.com
+
+
+
+
+
+
+Kevin:  Seed food file, Foods view, Market Map for Web, Checking bugs around not being authenticated.
+
+Nate:  Needs FoodProducts seeded to start connecting the market to food products
+
+Matt:  Working on iOS
+
+Jeff:  Overlay Zoning Map for Business

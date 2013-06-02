@@ -1,10 +1,11 @@
 class FoodProduct < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :product_category_id
 
   has_many :market_food_products
   has_many :markets, :through => :market_food_product
 
   has_many :seasons
+  belongs_to :product_category
 
   def season_status(state)
   	if self.seasons.blank?
