@@ -6,20 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'csv'    
+# require 'csv'    
 
-csv_text = File.read('db/Export.csv')
-csv_text.encode('UTF-8')
-#puts "text: #{csv_text}"
-csv = CSV.parse(csv_text, :headers => true)
-csv.each do |row|
-	if row.to_hash["state"] == "Colorado"
-		puts row.to_hash
-		unless Market.exists?(row.to_hash["fmid"])
-		  Market.create!(row.to_hash)
-		end
-	end
-end
+# csv_text = File.read('db/Export.csv')
+# csv_text.encode('UTF-8')
+# #puts "text: #{csv_text}"
+# csv = CSV.parse(csv_text, :headers => true)
+# csv.each do |row|
+# 	if row.to_hash["state"] == "Colorado"
+# 		puts row.to_hash
+# 		unless Market.exists?(row.to_hash["fmid"])
+# 		  Market.create!(row.to_hash)
+# 		end
+# 	end
+# end
 
 %w(Produce Meat Dairy Poultry Processed Seafood Other).each do |category|
   ProductCategory.create(:name => category)
