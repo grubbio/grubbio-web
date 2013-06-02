@@ -7,7 +7,7 @@
 <% season_status = @food.season_status(state) %>
 
 <section id="food-information">
-	<div class='page-header'>
+	<div class='page-header' style='margin-bottom: 0px;'>
 		<div class="pure-g">
 			<div class="pure-u-1-2">
 				<h2 style='font-size: 34px; position: relative; top: 4px;'><%= @food.name.pluralize %></h2>
@@ -17,13 +17,13 @@
 					<div style='font-size: 18px; font-weight: bold; padding: 10px; width: 200px; background-color: #22C25D; color: #fff; margin-top: -5px; float: right;'>
 						In Season!
 					</div><br><br><br><br>
-					open seasonal calendar
+					<%= link_to "open seasonal calendar", "#calendar", id: "food-show-calendarToggle" %>
 				<% elsif season_status == 'out of season' %>
 					<div style='font-size: 14px; font-weight: bold; padding: 12px; width: 200px; background-color: #eee; color: #ccc; margin-top: -5px; float: right;'>
 						Out of Season.
 					</div>
 					<br><br><br><br>
-					open seasonal calendar
+					<%= link_to "open seasonal calendar", "#calendar", id: "food-show-calendarToggle" %>
 				<% else %>
 					<div style='font-size: 14px; font-weight: bold; padding: 12px; width: 200px; background-color: #eee; color: #ccc; margin-top: -5px; float: right;'>
 						no seasonal data available...
@@ -33,19 +33,91 @@
 		</div>
 	</div>
 
+	<div class="pure-g hidden" id="food-show-seasonalCalendar">
+		<div class="pure-u-1">
+			<div style='font-size: 14px; background-color: #eee; padding: 20px; float: left;'>
+				<h3>seasonal calendar for <%= state %>:</h3>
+				<table style="width: 100%;">
+					<tr>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								January
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								February
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								March
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								April
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								May
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								June
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								July
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								August
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								September
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								October
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								November
+							</div>
+						</td>
+						<td style="width: 8.33%; text-align: center;">
+							<div style="margin: 5px; background-color: #fff; height: 50px; padding-top: 35px;">
+								December
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<div class="pure-g">
-		<div class="pure-u-1-2" style='font-size: 14px;'>
+		<div class="pure-u-1-2" style='font-size: 14px; margin-top: 20px;'>
 			<img src="http://placehold.it/300x200" width="300" style="padding: 0px 15px 15px 0px; float: left;" />
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</div>
-		<div class="pure-u-1-2">
+		<div class="pure-u-1-2" style="margin-top: 20px;">
 			<table>
 				<tr>
 					<td style="font-size: 24px; color: #1391FF; background-color: #eee; width: 100%;">
 						<div style="padding: 15px; width: 100%;">
-							Who has Cherries available?
+							Who has <%= @food.name.pluralize %> available?
 						</div>
 					</td>
 				</tr>
