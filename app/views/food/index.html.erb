@@ -15,7 +15,7 @@
     <% @foods.each do |food| %>
       <tr>
         <td style="width: 60%;">
-          <%= link_to food.name.pluralize, "/food/#{food.id}/#{food.name}" %>
+          <%= link_to food.name.pluralize, "/food/#{food.id}/#{food.name.pluralize.parameterize}" %>
         </td>
       </tr>
     <% end %>
