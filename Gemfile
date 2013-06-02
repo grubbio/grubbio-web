@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'sqlite3'
-gem 'pry'
+gem 'pg'
 
 gem 'devise'
 gem "geocoder", "~> 1.1.8"
@@ -20,3 +19,9 @@ end
 gem 'jquery-rails'
 gem "jquery-ui-rails", "~> 4.0.3"
 gem "rails3-jquery-autocomplete"
+
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-remote'
+end

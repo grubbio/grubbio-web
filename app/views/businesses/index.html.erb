@@ -22,9 +22,14 @@
         <td><%= business.name %></td>
         <td><%= business.description %></td>
         <td>
-          <%= link_to "Add Profile", new_business_business_profile_path(business) %> |
-          <%= link_to "Edit", edit_business_path(business) %>
-          <%#= link_to "Delete", {action: :destroy}, :confirm => "Are you sure?" %>
+          <% if business.business_profile %>
+            <%= link_to "Edit Profile", edit_business_business_profile_path(business) %> |
+          <% else %>
+            <%= link_to "Add Profile", new_business_business_profile_path(business) %> |
+          <% end %>
+
+          <%= link_to "Edit", edit_business_path(business) %> | 
+          <%= button_to "Delete", business_path(business), :method => :delete, :confirm => "Are you sure?" %>
         </td>
       </tr>
     <% end %>
