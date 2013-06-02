@@ -79,3 +79,30 @@
 # (1..5).each do |i|
 # 	b.business_profile.food_products << FoodProduct.find(i)
 # end
+
+# broken_links = []
+
+# markets = Market.all
+
+# markets.each do |market|
+# 	begin
+# 		if market.website
+# 			response = HTTParty.get(market.website)
+# 			if response.code.to_s != '200'
+# 				data = {
+# 					id: market.fmid,
+# 					url: market.website
+# 				}
+# 				broken_links << data
+# 				puts "#{market.fmid} - BROKEN"
+# 			else
+# 				puts "#{market.fmid}"
+# 			end
+# 		end
+# 	rescue
+# 		puts "rescued?"
+# 	end
+# end
+
+# puts broken_links
+
