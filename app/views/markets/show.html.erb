@@ -1,32 +1,41 @@
 <section id="market-information">
-  <h2>
-  	<% if @market.website.present? %>
-	  	<a href="<%= @market.website %>"><%= @market.market_name %></a>
-	  <% else %>
-	  	<%= @market.market_name %>
-	  <% end %>
-	  <br />
-  	<%= @market.schedule %>
-  	<br />
-  	<%= @market.full_street_address %>
-  </h2>
-
-<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @market.full_street_address %>&zoom=14&size=600x400&sensor=false&markers=color:blue|label:M|<%= @market.y %>,<%= @market.x %>">
-
-	<h3>
-  	<br />
-  	<table>
-  		<thead>
-  			<tr>Offered at this market:</tr>
-  		</thead>
-  		<tbody>
-  			<% @market.food_products.each do |food| %>
-  				<tr>
-  					<td style="padding-left:10px;"><%= food.name %></td>
-  				</tr>
-		  	<% end %>
-		  </tbody>
-		</table>
-	</h3>
+  <div class='page-header' style='margin-bottom: 20px;'>
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <h2>
+          <% if @market.website.present? %>
+            <%= link_to @market.market_name, @market.website, target: '_blank' %>
+          <% else %>
+            <%= @market.market_name %>
+          <% end %>
+        </h2>
+      </div>
+      <div class="pure-u-1-2" style="text-align: right; font-size: 14px;">
+        <%= @market.schedule %>
+      </div>
+    </div>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <address style="font-size: 12px;">
+        <%= @market.full_street_address %><br><br>
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @market.full_street_address %>&zoom=14&size=440x400&sensor=false&markers=color:blue|label:M|<%= @market.y %>,<%= @market.x %>">
+      </address>
+    </div>
+    <div class="pure-u-1-2">
+      <table>
+        <thead>
+          <tr>Offered at this market:</tr>
+        </thead>
+        <tbody>
+          <% @market.food_products.each do |food| %>
+            <tr>
+              <td style="padding-left:10px;"><%= food.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
