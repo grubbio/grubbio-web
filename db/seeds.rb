@@ -21,46 +21,46 @@
 # 	end
 # end
 
-%w(Produce Meat Dairy Poultry Processed Seafood Other).each do |category|
-  ProductCategory.create(:name => category)
-end
+# %w(Produce Meat Dairy Poultry Processed Seafood Other).each do |category|
+#   ProductCategory.create(:name => category)
+# end
 
-VEGETABLES = [
-	"Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Cherry", "Radish", "Onion", "Potato", "Lettuce", "Spinach", "Asparagus",
-	"Rhubarb", "Apricot", "Beet", "Cabbage", "Celery", "Cucumber", "Green Bean", "Chile Pepper", "Corn", "Eggplant", "Peach", "Plum",
-	"Squash", "Tomato", "Watermelon", "Grape", "Raspberry", "Carrot", "Tomatillo", "Blackberry", "Mushroom"
-]
+# VEGETABLES = [
+# 	"Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Cherry", "Radish", "Onion", "Potato", "Lettuce", "Spinach", "Asparagus",
+# 	"Rhubarb", "Apricot", "Beet", "Cabbage", "Celery", "Cucumber", "Green Bean", "Chile Pepper", "Corn", "Eggplant", "Peach", "Plum",
+# 	"Squash", "Tomato", "Watermelon", "Grape", "Raspberry", "Carrot", "Tomatillo", "Blackberry", "Mushroom"
+# ]
 
-VEGETABLES.each do |food|
-	new_food = FoodProduct.create({ name: food, product_category_id: 1 })
-	puts new_food.name
-end
+# VEGETABLES.each do |food|
+# 	new_food = FoodProduct.create({ name: food, product_category_id: 1 })
+# 	puts new_food.name
+# end
 
-MEATS = [
-	"Pork", "Beef", "Sausage", "Bacon", "Lamb"
-]
+# MEATS = [
+# 	"Pork", "Beef", "Sausage", "Bacon", "Lamb"
+# ]
 
-MEATS.each do |meat|
-	new_food = FoodProduct.create({ name: meat, product_category_id: 2 })
-	puts new_food.name
-end
+# MEATS.each do |meat|
+# 	new_food = FoodProduct.create({ name: meat, product_category_id: 2 })
+# 	puts new_food.name
+# end
 
-POULTRYS = [
-	"Chicken", "Turkey"
-]
+# POULTRYS = [
+# 	"Chicken", "Turkey"
+# ]
 
-POULTRYS.each do |poultry|
-	new_food = FoodProduct.create({ name: poultry, product_category_id: 4 })
-	puts new_food.name
-end
+# POULTRYS.each do |poultry|
+# 	new_food = FoodProduct.create({ name: poultry, product_category_id: 4 })
+# 	puts new_food.name
+# end
 
-DAIRYS = [
-	"Milk", "Cheese", "Butter", "Eggs"
-]
+# DAIRYS = [
+# 	"Milk", "Cheese", "Butter", "Eggs"
+# ]
 
-DAIRYS.each do |dairy|
-	new_food = FoodProduct.create({ name: dairy, product_category_id: 3 })
-	puts new_food.name
-end
+# DAIRYS.each do |dairy|
+# 	new_food = FoodProduct.create({ name: dairy, product_category_id: 3 })
+# 	puts new_food.name
+# end
 
-FoodProduct.create({ name: 'Honey', product_category_id: 7 })
+# FoodProduct.create({ name: 'Honey', product_category_id: 7 })
