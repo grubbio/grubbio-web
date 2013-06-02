@@ -1,10 +1,14 @@
 class MarketsController < ApplicationController
 
-  respond_to :json, :html
+  autocomplete :market, :market_name
+  
+  respond_to :json, :js, :html
 
   def index
     distance = params[:distance].present? ? params[:distance] : 10
-    if params[:zip].present?
+    if params[:term].present?
+      @markets = Market.all(:conditions => ['market_name LIKE ?', "%#{params[:term].downcase}%"])
+    elsif params[:zip].present?
       coordinates = Geocoder.coordinates(params[:zip])
       @markets = Market.get_markets_near_me(coordinates[0], coordinates[1], distance).paginate(page: params[:page], per_page: 30)
     elsif params[:lat].present? && params[:long].present?
@@ -16,6 +20,9 @@ class MarketsController < ApplicationController
   end
 
   def show
+    if params[:term].present?
+      @markets = Market.all(:conditions => ['market_name LIKE ?', "%#{params[:term].downcase}%"])
+    end
     @market = Market.find(params[:id])
 
     respond_with @market
