@@ -64,3 +64,11 @@
 # end
 
 # FoodProduct.create({ name: 'Honey', product_category_id: 7 })
+market_ids = Market.all.map {|market| market.id}
+food_ids = FoodProduct.all.map {|food| food.id}
+market_ids.each do |id|
+	(1..12).each do
+		Market.find(id).food_products << FoodProduct.find(food_ids.sample)
+	end
+end
+
