@@ -1,3 +1,11 @@
 <section id="food-information">
 	<h2><%= @food.name %></h2>
 </section>
+
+<% if user_signed_in? %>
+	<% state = current_user.get_state %>
+<% else %>
+	<% state = "CO" %>
+<% end %>
+
+<h2><%= @food.season_status(state) %></h2>

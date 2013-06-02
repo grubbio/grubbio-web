@@ -1,1 +1,29 @@
-this is the food index.
+<%# if current_user.located? %>
+<!--   <section id="uber-search"> -->
+      <%# render partial: 'markets/search' %>
+<!--   </section> -->
+<%# end %>
+
+<section id="food-list">
+  <h2>FOOD!</h2>
+  <table class="pure-table pure-table-horizontal" style="width: 100%;">
+    <tr>
+      <th>
+        Name:
+      </th>
+    </tr>
+    <% @foods.each do |food| %>
+      <tr>
+        <td style="width: 60%;">
+          <%= link_to food.name, "/food/#{food.id}/#{food.name}" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+
+<section id="markets-pagination" style="margin-top: 20px;">
+  <%= will_paginate @foods %>
+  <br><br>
+  (<%= FoodProduct.count %> total)
+</section>

@@ -21,17 +21,16 @@
 # 	end
 # end
 
-%w(Produce Meat Dairy Poultry Processed Seafood).each do |category|
-  ProductCategory.create(:name => category)
+# %w(Produce Meat Dairy Poultry Processed Seafood).each do |category|
+#   ProductCategory.create(:name => category)
 
+# FOODS = [
+# 	"Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Cherry", "Radish", "Onion", "Potato", "Lettuce", "Spinach", "Asparagus",
+# 	"Rhubarb", "Apricot", "Beet", "Cabbage", "Celery", "Cucumber", "Green Bean", "Chile Pepper", "Corn", "Eggplant", "Peach", "Plum",
+# 	"Squash", "Tomato", "Watermelon", "Grape", "Raspberry"
+# ]
 
-FOODS = [
-	"Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Cherry", "Radish", "Onion", "Potato", "Lettuce", "Spinach", "Asparagus",
-	"Rhubarb", "Apricot", "Beet", "Cabbage", "Celery", "Cucumber", "Green Bean", "Chile Pepper", "Corn", "Eggplant", "Peach", "Plum",
-	"Squash", "Tomato", "Watermelon", "Grape", "Raspberry"
-]
-
-FOODS.each do |food|
-	new_food = FoodProduct.create({ name: food })
-	puts new_food.name
-end
+# FOODS.each do |food|
+# 	new_food = FoodProduct.create({ name: food })
+# 	puts new_food.name
+# end
