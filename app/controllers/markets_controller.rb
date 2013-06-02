@@ -4,6 +4,8 @@ class MarketsController < ApplicationController
   
   respond_to :json, :js, :html
 
+  #before_filter :check_for_current_user
+
   def index
     distance = params[:distance].present? ? params[:distance] : 10
     if params[:term].present?
@@ -71,6 +73,12 @@ class MarketsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to markets_url }
       format.json { head :no_content }
+    end
+  end
+
+  def check_for_current_user
+    if current_user.blank?
+      redirect_to root_path, :alert => "Please sign in to see your local markets"
     end
   end
 end

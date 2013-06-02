@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+# gem 'sqlite3'
+gem 'pry'
 gem 'pg'
 
 gem 'devise'
@@ -16,8 +18,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem "jquery-ui-rails", "~> 4.0.3"
+gem "jquery-rails"
+gem "jquery-ui-rails"
 gem "rails3-jquery-autocomplete"
 
 group :development do

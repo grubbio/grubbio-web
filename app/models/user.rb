@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :lat, :lng, :raw_location
+  	attr_accessible :email, :password, :password_confirmation, :remember_me, :lat, :lng, :raw_location, :address_state, :address_city, :address_zip, :address_street
 
  	validates :email, presence: true
 
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
  	def state_located?
  		if self.address_state.blank?
- 			self.get_state
+ 			get_state
  		end
  		true
  	end
