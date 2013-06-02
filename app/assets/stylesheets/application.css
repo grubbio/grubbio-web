@@ -8,6 +8,26 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ /*
+ *= require jquery.ui.all
  *= require_self
  *= require_tree .
  */
+
+.notify-content
+  padding-top: 10px
+  padding-bottom: 10px
+  text-shadow: 0 0 0
+  color: #000
+  background-position: left center
+  section
+    padding-left: 10px
+    font-size: 1.1rem
+.notification.success
+  color: #000
+.notification.danger
+  color: #000
+.notification.important
+  color: red
+.notification.warning
+  color: #000
