@@ -73,3 +73,9 @@
 # 	end
 # end
 
+# b = Business.create(:name => "Jeff's Tilapia and Tomatoes", :description => "The best aquaponic food in Colorado")
+# b.create_business_profile(:address1 => "1500 Wynkoop St.", :city => "Denver", :state => "CO", :zip_code => "80202")
+
+# (1..5).each do |i|
+# 	b.business_profile.food_products << FoodProduct.find(i)
+# end
