@@ -1,0 +1,22 @@
+<div style="display: block; float: left; font-size: 14pt; margin-left: 48px; width: 45%;">
+  <h3>Zoning Map</h3>
+  <ul>
+    <li><%= link_to "Animal Husbandry", animal_husbandry_business_business_dashboard_path(@business) %></a></li>
+    <li><%= link_to "Aquaculture", aquaculture_business_business_dashboard_path(@business) %></li>
+    <li><%= link_to "Farmers Market", farmers_market_business_business_dashboard_path(@business) %></li>
+    <li><%= link_to "Plant Husbandry", plant_husbandry_business_business_dashboard_path(@business) %></li>
+    <li><%= link_to "Plant Nursery", plant_nursery_business_business_dashboard_path(@business) %></li>
+    <li><%= link_to "Primary Food Sales/Markets", primary_food_sales_business_business_dashboard_path(@business) %></a></li>
+    <li><%= link_to "Urban Garden", urban_garden_business_business_dashboard_path(@business) %></a></li>
+  </ul>
+</div>
+
+<div style="display:block; float: left; font-size: 14pt; width: 45%; margin-left: 48px; margin-top: 12px;">
+  <h3>Your Products</h3>
+
+  <ol>
+    <% @business.business_profile.food_products.map(&:name).each do |food| %>
+      <li><%= food %></li>
+    <% end %>
+  </ol>
+</div>

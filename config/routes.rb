@@ -10,6 +10,17 @@ GrubbioWeb::Application.routes.draw do
   
   resources :businesses do
     resource :business_profile
+    resource :business_dashboard do
+      collection do
+        get :animal_husbandry
+        get :aquaculture
+        get :farmers_market
+        get :plant_husbandry
+        get :plant_nursery
+        get :primary_food_sales
+        get :urban_garden
+      end
+    end
   end
 
   #resources :markets
