@@ -30,7 +30,10 @@ class User < ActiveRecord::Base
  	end
 
  	def state_located?
- 		return true if self.address_state.present?
+ 		if self.address_state.blank?
+ 			self.get_state
+ 		end
+ 		true
  	end
 
  	def get_state
