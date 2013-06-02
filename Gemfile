@@ -18,3 +18,5 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "jquery-ui-rails", "~> 4.0.3"
+gem "rails3-jquery-autocomplete"

@@ -2,36 +2,8 @@
     <%= render partial: 'markets/search' %>
 </section>
 
-<section id="markets-list">
-  <h2>Local Farmers Markets</h2>
-  <table class="pure-table pure-table-horizontal" style="width: 100%;">
-    <tr>
-      <th>
-        Name:
-      </th>
-      <th>
-        City, State
-      </th>
-      <th>
-        Website:
-      </th>
-    </tr>
-    <% @markets.each do |market| %>
-      <tr>
-        <td style="width: 60%;">
-          <%= link_to market.market_name, market_path(market) %>
-        </td>
-        <td style="width: 20%;">
-          <%= market.city %>, <%= market.state %>
-        </td>
-        <td style="width: 20%;">
-          <% if market.website %>
-            <%= link_to "website", market.website, target: '_blank' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+<section id="main">
+  <%= render partial: "markets/list" %>
 </section>
 
 <section id="markets-pagination" style="margin-top: 20px;">

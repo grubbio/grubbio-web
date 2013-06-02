@@ -12,7 +12,7 @@ GrubbioWeb::Application.routes.draw do
     resource :business_profiles
   end
 
-  resources :markets
+  #resources :markets
 
   resources :food_products
   
@@ -23,4 +23,8 @@ GrubbioWeb::Application.routes.draw do
   end
 
   root :to => 'pages#index'
+
+  resources :markets do
+  	get :autocomplete_market_market_name, :on => :collection
+	end
 end
