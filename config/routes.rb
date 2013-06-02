@@ -7,6 +7,8 @@ GrubbioWeb::Application.routes.draw do
               }
 
   resources :users
+
+  match '/resources', to: 'pages#resources'
   
   resources :businesses do
     resource :business_profile
