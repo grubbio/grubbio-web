@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.state_located? %>
+<% unless user_signed_in? && current_user.state_located? %>
   <section id="uber-search">
       <%= render partial: 'markets/search' %>
   </section>
@@ -10,6 +10,4 @@
 
 <section id="markets-pagination" style="margin-top: 20px;">
   <%= will_paginate @markets %>
-  <br><br>
-  (<%= Market.count %> total)
 </section>
