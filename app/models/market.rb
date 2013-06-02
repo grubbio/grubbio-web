@@ -15,6 +15,44 @@ class Market < ActiveRecord::Base
 	reverse_geocoded_by :y, :x, :address => :street
 	after_validation :reverse_geocode  # auto-fetch address
 
+	def self.search(query)
+		distance = query[:distance]
+		zip_markets = []
+		if query[:zip].present?
+			coordinates = Geocoder.coordinates(query[:zip])
+  	  zip_markets = Market.get_markets_near_me(coordinates[0], coordinates[1], distance)
+  	end
+  	food_markets = []
+  	if query[:food].present?
+  		food_markets = Market.with_food(query[:food])
+		end
+		term_markets = []
+  	if query[:term].present?
+  		term_markets = Market.all(:conditions => ['market_name LIKE ?', "%#{query[:term].downcase}%"])
+  	end
+  	latlong_markets = []
+  	if query[:lat].present? && query[:long].present?
+  		latlong_markets = Market.get_markets_near_me(query[:lat], query[:long], distance)
+  	end
+
+  	if zip_markets.empty? && food_markets.empty? && term_markets.empty? && latlong_markets.empty?
+  	  return Market.all
+  	else
+  		populated_arrays = []
+  		market_arrays = [] << zip_markets << food_markets << term_markets << latlong_markets
+  		market_arrays.each do |ma|
+  			if ma.any?
+  				populated_arrays << ma
+  			end
+  		end
+  		markets = populated_arrays.first
+  		(1..populated_arrays.length).each_with_index do |a, i|
+  			markets = markets | populated_arrays[i]
+  		end
+  		return markets.uniq{|m| m.fmid}
+  	end
+  end
+
 	def full_street_address
 		"#{street}, #{city}, #{state}"
 	end
@@ -32,5 +70,6 @@ class Market < ActiveRecord::Base
 				end
 			end
 		end
+		return markets
 	end
 end

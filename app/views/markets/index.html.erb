@@ -1,8 +1,8 @@
-<% unless user_signed_in? && current_user.state_located? %>
+<!--% unless user_signed_in? && current_user.state_located? % -->
   <section id="uber-search">
       <%= render partial: 'markets/search' %>
   </section>
-<% end %>
+<!-- % end % -->
 
 <section id="main">
   <%= render partial: "markets/list" %>
