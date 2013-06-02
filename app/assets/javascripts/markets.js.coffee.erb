@@ -3,6 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-	$("#market_name_input").bind "railsAutocomplete.select", (event, data) ->
-		debugger
-		alert "fuck"
+	$("#market-name-input").bind "railsAutocomplete.select", (event, data) ->
+		window.location.href = "/markets/#{data.item.id}"

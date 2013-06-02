@@ -23,4 +23,14 @@ class Market < ActiveRecord::Base
 		Market.near([lat, long], distance)
 	end 
 
+	def self.with_food(food)
+		markets= []
+		Market.all.each do |m|
+			m.food_products.each do |f|
+				if f.name == food
+					markets << m
+				end
+			end
+		end
+	end
 end

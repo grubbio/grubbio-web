@@ -13,6 +13,8 @@ class MarketsController < ApplicationController
     elsif params[:zip].present?
       coordinates = Geocoder.coordinates(params[:zip])
       @markets = Market.get_markets_near_me(coordinates[0], coordinates[1], distance).paginate(page: params[:page], per_page: 30)
+    elsif params[:food].present?
+      @markets = Market.with_food(params[:food])
     elsif params[:lat].present? && params[:long].present?
       @markets = Market.get_markets_near_me(params[:lat], params[:long], distance).paginate(page: params[:page], per_page: 30)
     else

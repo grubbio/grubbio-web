@@ -1,3 +1,32 @@
 <section id="market-information">
-  <h2><%= @market.market_name %></h2>
+  <h2>
+  	<% if @market.website.present? %>
+	  	<a href="<%= @market.website %>"><%= @market.market_name %></a>
+	  <% else %>
+	  	<%= @market.market_name %>
+	  <% end %>
+	  <br />
+  	<%= @market.schedule %>
+  	<br />
+  	<%= @market.full_street_address %>
+  </h2>
+
+<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @market.full_street_address %>&zoom=14&size=600x400&sensor=false&markers=color:blue|label:M|<%= @market.y %>,<%= @market.x %>">
+
+	<h3>
+  	<br />
+  	<table>
+  		<thead>
+  			<tr>Offered at this market:</tr>
+  		</thead>
+  		<tbody>
+  			<% @market.food_products.each do |food| %>
+  				<tr>
+  					<td style="padding-left:10px;"><%= food.name %></td>
+  				</tr>
+		  	<% end %>
+		  </tbody>
+		</table>
+	</h3>
 </section>
+
