@@ -3,23 +3,23 @@ module Location
 	FORMAT = "json"
 	ESRI_BASE_URL = "http://geocode.arcgis.com/"
 	ESRI_ADDRESS = "arcgis/rest/services/World/GeocodeServer/find"
-	ESRI_COORDINATES = "/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/reverseGeocode"
+	ESRI_COORDINATES = "arcgis/rest/services/World/GeocodeServer/reverseGeocode"
 
 	# lng(x),lat(y) (esri wants coordinates in that order to be sent)
 	def get_address(coordinates)
+		url = "#{ESRI_BASE_URL}#{ESRI_COORDINATES}?location=#{coordinates[0]},#{coordinates[1]}&f=#{FORMAT}"
+		puts url
+		response = HTTParty.get(url)
+		body = JSON.parse response.body
 
-		# OFFLINE UNTIL WE GET AN ESRI TOKEN FOR REVERSE GEOCODING
-
-		# url = "#{ESRI_BASE_URL}#{ESRI_COORDINATES}?location=#{coordinates[0]},#{coordinates[1]}&f=#{FORMAT}"
-		# puts url
-		# response = HTTParty.get(url)
-		# body = JSON.parse response.body
-
-		# binding.pry
-
-		# address = "#{body['address']['Address']}, #{body['address']['City']}"
-		# puts address
-		# return address
+		data = {
+			street: body['address']['Address'],
+			city: body['address']['City'],
+			state: body['address']['Region'],
+			zip: body['address']['Postal']
+		}
+		
+		return data
 	end
 
 	def get_coordinates(address)

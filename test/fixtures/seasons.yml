@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  food_product_id: 1
+  state: MyString
+  month: 2013-06-01
+
+two:
+  food_product_id: 1
+  state: MyString
+  month: 2013-06-01

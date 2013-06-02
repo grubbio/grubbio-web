@@ -11,6 +11,9 @@
 			  <%= f.label :email %>
 			  <%= f.email_field :email, autofocus: true %>
 
+			  <%= f.label :location %>
+			  <%= f.text_field :raw_location, placeholder: "city, state or zipcode..." %>
+
 			  <%= f.label :password %>
 			  <%= f.password_field :password %>
 
