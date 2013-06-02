@@ -4,7 +4,7 @@ class MarketsController < ApplicationController
   
   respond_to :json, :js, :html
 
-  before_filter :check_for_current_user
+  #before_filter :check_for_current_user
 
   def index
     distance = params[:distance].present? ? params[:distance] : 10
