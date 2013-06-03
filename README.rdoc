@@ -1,38 +1,29 @@
-== Documentation
+== Grubb.io - your local source
 
-*User Creation*
+Grubb.io is designed as a place to connect local food producers, consumers, and enthusiasts.  As a collection of tools and resources, its only purpose is to help build those connections between local food markets.
 
-POST "/users" datatype: JSON
-{'user':{'email':'example@example.com','password':'example','password_confirmation':'example'}}
+==== Winner:  Sustainability Track, Hack4Colorado 2013 (part of the National Civic Day of Hacking)
 
-example curl:
+==== Contributors:
 
-curl -v -H "Content-Type: application/json" -X POST -d '{"user":{"email":"example@example.com","password":"example","password_confirmation":"example"}}' http://localhost:3000/users.json
+- Jeff Sutherland, Backend/Frontend Developer
+- Sean Day, Designer - CSS Contributor
+- Nate Hershey, Backend/Frontend Developer
+- Matt Riddoch, iOS Developer
+- Kevin Wanek, Backend Developer
 
+==== Ideas/Thoughts:
 
-*User Registration*
+- Contact one of the contributors listed above or leave a question on the Github page.
 
-POST "/users/sign_in.json" datatype: JSON
-{'user':{'email':'example@example.com','password':'example'}}
+==== Contributing:
 
+- Fork this repo and submit a pull request with your changes included.
 
-example curl:
+==== Moving Forward:
 
-curl -v -H "Content-Type: application/json" -X POST -d '{"user":{"email":"example@example.com","password":"example"}}' http://localhost:3000/users/sign_in.json
+- This project is still maintained and under active development by the original team.  
 
 
 
 === PROD URL:  grubbio.herokuapp.com
-
-
-
-
-
-
-Kevin:  Seed food file, Foods view, Market Map for Web, Checking bugs around not being authenticated.
-
-Nate:  Needs FoodProducts seeded to start connecting the market to food products
-
-Matt:  Working on iOS
-
-Jeff:  Overlay Zoning Map for Business
