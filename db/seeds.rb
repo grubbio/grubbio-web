@@ -108,11 +108,23 @@
 
 USERS = [	{user_email: "consumer@grubb.io", password: "password", location: "Denver, CO"},
 					{user_email: "producer@grubb.io", password: "password", location: "Denver, CO"},
-					{user_email: "market@grubb.io", password: "password", location: "Denver, CO"}
+					{user_email: "market@grubb.io", password: "password", location: "Denver, CO"},
+					{user_email: "admin@grubb.io", password: "password", location: "denver, CO"}
 				]
 
 USERS.each do |user|
-	User.new(email: user[:user_email], password: user[:password], raw_location: user[:location]).save
+	user = User.new(email: user[:user_email], password: user[:password], raw_location: user[:location])
+	case user.email
+	when "consumer@grubb.io"
+		user.add_role("consumer")
+	when "producer@grubb.io"
+		user.add_role("producer")
+	when "market@grubb.io"
+		user.add_role("market_manager")
+	when "admin@grubb.io"
+		user.add_role("admin")
+	end
+	user.save
 end
 
 

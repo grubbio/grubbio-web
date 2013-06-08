@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
 	include Location
 
   devise :database_authenticatable, :registerable,

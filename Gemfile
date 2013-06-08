@@ -6,6 +6,8 @@ gem 'rails', '3.2.13'
 gem 'pg'
 
 gem 'devise'
+gem 'cancan'
+gem 'rolify'
 gem "geocoder"#, "~> 1.1.8"
 gem 'httparty'
 gem "jquery-rails"
@@ -43,6 +45,7 @@ group :development, :test do
   gem 'pry-nav'
   gem 'pry-remote'
   gem "pry-stack_explorer"#, "~> 0.4.7"
+  gem 'hirb'
 end
 
 group :test do
