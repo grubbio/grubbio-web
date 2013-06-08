@@ -1,15 +1,19 @@
 class User < ActiveRecord::Base
   rolify
-	include Location
+	
+  include Location
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  	attr_accessible :email, :password, :password_confirmation, :remember_me, :lat, :lng, :raw_location, :address_state, :address_city, :address_zip, :address_street
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :lat, :lng, :raw_location,
+                  :address_state, :address_city, :address_zip, :address_street
 
+  attr_accessor :registration_roles
+  
  	validates :email, presence: true
 
- 	before_create :run_geolocation
+ 	before_create :run_geolocation, :set_roles
 
  	def run_geolocation 
  		self.geolocate(self.raw_location)
@@ -48,5 +52,9 @@ class User < ActiveRecord::Base
  		end
  		self.address_state
  	end
+
+  def set_roles
+    binding.pry
+  end
 
 end

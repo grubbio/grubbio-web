@@ -1,0 +1,12 @@
+%form#markets-search-form{:action => "/markets/", :method => "get"}
+  %fieldset#market-search-fieldset
+    #search-by-market
+      %label
+        Search by market name or zip code
+      %input#market-name-input{:autocomplete => "off", "data-autocomplete" => "/markets/autocomplete_market_market_name", :name => "name", :placeholder => "Search by market name or ZIP code", :type => "text"}
+    #search-by-food
+      %label
+        Search by food
+      %input#market-food-input{:name => "food", :placeholder => "Search by food", :type => "text"}
+    #market-search-submit
+      %button#market-search-button.pure-button.notice{:type => "submit"} Find it!

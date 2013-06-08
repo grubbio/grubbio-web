@@ -1,6 +1,6 @@
 class MarketsController < ApplicationController
 
-  autocomplete :market, :market_name
+  autocomplete :market, :market_name, :full => true
   
   respond_to :json, :js, :html
 
