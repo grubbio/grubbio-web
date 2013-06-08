@@ -16,6 +16,8 @@ gem "rails3-jquery-autocomplete"
 gem "formtastic"
 gem "kaminari", "~> 0.13"
 
+gem "thin" # moving out :development (http://stackoverflow.com/questions/11353334/bundler-command-not-found-thin-heroku-deployment-rails)
+
 group :assets do
   gem 'sass-rails'#,   '~> 3.2.3'
   gem 'coffee-rails'#, '~> 3.2.1'
@@ -28,7 +30,6 @@ group :development do
   gem "guard-spork"#, "~> 1.1"
   gem "haml-rails"#, "~> 0.3.5"
   gem "spork"#, "~> 0.9"
-  gem "thin"
 end
 
 group :development, :test do
