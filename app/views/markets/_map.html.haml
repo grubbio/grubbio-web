@@ -1,0 +1,5 @@
+- @pin_string = ""
+- @markets.each do |m|
+  - if m.x.present? and m.y.present?
+    - @pin_string = @pin_string + "&markers=color:blue|label:M|#{m.y},#{m.x}"
+%img{:src => "http://maps.googleapis.com/maps/api/staticmap?center=Denver,CO&zoom=8&size=800x400&sensor=false#{@pin_string}"}/

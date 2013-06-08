@@ -106,3 +106,20 @@
 
 # puts broken_links
 
+USERS = [	{user_email: "consumer@grubb.io", password: "password", location: "Denver, CO"},
+					{user_email: "producer@grubb.io", password: "password", location: "Denver, CO"},
+					{user_email: "market@grubb.io", password: "password", location: "Denver, CO"}
+				]
+
+USERS.each do |user|
+	User.new(email: user[:user_email], password: user[:password], raw_location: user[:location]).save
+end
+
+
+
+
+
+
+
+
+
