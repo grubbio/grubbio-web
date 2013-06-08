@@ -1,7 +1,8 @@
 class FoodController < ApplicationController
 
 	def index
-		@foods = FoodProduct.paginate(page: params[:page], per_page: 30)
+		@foods = FoodProduct.all
+    @foods = Kaminari.paginate_array(@foods).page(params[:page])
 	end
 
 	def show

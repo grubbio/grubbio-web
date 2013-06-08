@@ -29,7 +29,7 @@
 </section>
 
 <section id="markets-pagination" style="margin-top: 20px;">
-  <%= will_paginate @foods %>
+  <%= paginate @foods %>
   <br><br>
   (<%= FoodProduct.count %> total)
 </section>
