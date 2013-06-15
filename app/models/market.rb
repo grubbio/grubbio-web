@@ -1,6 +1,9 @@
 class Market < ActiveRecord::Base
 
   resourcify
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
   
   attr_accessible :bakedgoods, :cheese, :city, :county, :crafts, :credit, :eggs, :flowers, :fmid, :herbs, :honey, :jams,
   								:location, :maple, :market_name, :meat, :nursery, :nuts, :plants, :poultry, :prepared, :schedule, :seafood,
@@ -18,7 +21,7 @@ class Market < ActiveRecord::Base
 	reverse_geocoded_by :y, :x, :address => :street
 	after_validation :reverse_geocode  # auto-fetch address
 
-	def self.search(query)
+	def self.custom_search(query)
 		distance = query[:distance]
 		zip_markets = []
 		if query[:zip].present?

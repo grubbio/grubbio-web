@@ -1,6 +1,6 @@
 %form#market-search-form{:action => "/markets/", :method => "get"}
   %fieldset#market-search-fieldset
-    #search-by-location
+    %span#search-by-location
       #search-by-distance
         %label
           Miles
@@ -11,21 +11,10 @@
           from
         %br
         %input#market-name-input{:name => "zip", :placeholder => "ZIP code or city", :type => "text"}
-        %a.pure-button.pure-button-primary
-          Go
-    #search-by-market
+    %span#search-by-market
       %label
         Filter by market name
       %br
-      %input#market-name-input{:autocomplete => "off", "data-autocomplete" => "/markets/autocomplete_market_market_name", :name => "name", :placeholder => "Market name", :type => "text"}
-      %a.pure-button.pure-button-primary
-        Go
-    #search-by-food
-      %label
-        Filter by food
-      %br
-      %input#market-food-input{:name => "food", :placeholder => "Search by food", :type => "text"}
-      %a.pure-button.pure-button-primary
-        Go
+      %input#market-name-input{:autocomplete => "off", "data-autocomplete" => "/markets/autocomplete_market_market_name", :name => "search", :placeholder => "Market name", :type => "text"}
     #market-search-submit
       %button#market-search-button.pure-button.notice{:type => "submit"} Find it!

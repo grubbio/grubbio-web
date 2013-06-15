@@ -21,6 +21,8 @@ gem "haml-rails"#, "~> 0.3.5"
 
 gem "thin" # moving out :development (http://stackoverflow.com/questions/11353334/bundler-command-not-found-thin-heroku-deployment-rails)
 
+gem "tire"
+
 group :assets do
   gem 'sass-rails'#,   '~> 3.2.3'
   gem 'coffee-rails'#, '~> 3.2.1'
