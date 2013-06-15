@@ -12,6 +12,7 @@ gem 'httparty'
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "rails3-jquery-autocomplete"
+gem "bootstrap-sass"
 
 gem "formtastic"
 gem "kaminari", "~> 0.13"

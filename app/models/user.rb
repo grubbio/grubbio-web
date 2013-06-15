@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   rolify
-	include Location
+	
+  include Location
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
                   :address_zip, :address_street, :registration_roles
 
   attr_accessor   :registration_roles
-
+  
  	validates :email, presence: true
 
  	before_create :run_geolocation, :set_roles
