@@ -5,11 +5,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  	attr_accessible :email, :password, :password_confirmation, :remember_me, :lat, :lng, :raw_location, :address_state, :address_city, :address_zip, :address_street
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+                  :lat, :lng, :raw_location, :address_state, :address_city, 
+                  :address_zip, :address_street, :registration_roles
+
+  attr_accessor   :registration_roles
 
  	validates :email, presence: true
 
- 	before_create :run_geolocation
+ 	before_create :run_geolocation, :set_roles
 
  	def run_geolocation 
  		self.geolocate(self.raw_location)
@@ -48,5 +52,11 @@ class User < ActiveRecord::Base
  		end
  		self.address_state
  	end
+
+  def set_roles
+    registration_roles.each do |role|
+      if role.present? then add_role role.to_sym end
+    end
+  end
 
 end
