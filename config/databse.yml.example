@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: grubbio-web_development
+  username: <username>
+  password: <password>
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: grubbio-web_test
+  username: <username>
+  password: <password>
+  host: localhost

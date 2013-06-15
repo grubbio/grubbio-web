@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-# gem 'sqlite3'
 gem 'pg'
 
 gem 'devise'
@@ -14,10 +13,12 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "rails3-jquery-autocomplete"
 
-#gem 'will_paginate', '3.0.0'
-#gem 'dojo-rails'
 gem "formtastic"
 gem "kaminari", "~> 0.13"
+
+gem "haml-rails"#, "~> 0.3.5"
+
+gem "thin" # moving out :development (http://stackoverflow.com/questions/11353334/bundler-command-not-found-thin-heroku-deployment-rails)
 
 group :assets do
   gem 'sass-rails'#,   '~> 3.2.3'
@@ -29,9 +30,7 @@ group :development do
 	gem "guard-cucumber"#, "~> 1.2"
   gem "guard-rspec"#, "~> 1.2"
   gem "guard-spork"#, "~> 1.1"
-  gem "haml-rails"#, "~> 0.3.5"
   gem "spork"#, "~> 0.9"
-  gem "thin"
 end
 
 group :development, :test do
