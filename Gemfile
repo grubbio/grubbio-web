@@ -30,7 +30,6 @@ group :development do
   gem "guard-rspec"#, "~> 1.2"
   gem "guard-spork"#, "~> 1.1"
   gem "haml-rails"#, "~> 0.3.5"
-  gem "online-generator"#, "~> 1.0"
   gem "spork"#, "~> 0.9"
   gem "thin"
 end
@@ -39,7 +38,6 @@ group :development, :test do
 	gem 'rb-fsevent'#, '~> 0.9.1'
   gem "debugger"#, "~> 1.2"
   gem "factory_girl_rails"#, "~> 3.5"
-  gem "hirb"
   gem 'pry'
   gem "pry-rails"#, "~> 0.2"
   gem 'pry-nav'

@@ -1,7 +1,8 @@
-%section#uber-search
+%section#markets-search-filter
   = render partial: 'markets/search'
-%section#main
+%section#markets-map
   = render partial: "markets/map"
+%section#markets-list
   = render partial: "markets/list"
 
-  = paginate @markets
+= paginate @markets
