@@ -99,3 +99,12 @@ h1.logo span {
 		margin: 200px 0 200px 0;
 	}
 }
+
+ul.popular-search-list {
+	list-style: inside none;
+	li {
+		display: block;
+		float: left;
+		margin: 5px;
+	}
+}

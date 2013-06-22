@@ -1,64 +1,63 @@
-<section id="uber-search">
-	<%= render partial: "search/bar" %>
-</section>
+<%= render partial: "search/bar" %>
 
 <section id="actions">
-	<div class="pure-g-r" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px solid #bbb;">
-		<div class="pure-u-1-4">
+	<div>
+		<div>
 			<%= link_to "Farmers Markets", markets_path, :class => "index-action-button" %>
 		</div>
-		<div class="pure-u-1-4">
+		<div
 			<%= link_to "Food Lists", "/food", :class => "index-action-button" %>
 		</div>
 <!-- 		<div class="pure-u-1-4">
 			<%#= link_to "Producers Directory", businesses_path, :class => "index-action-button" %>
 		</div>
  -->		
- 		<div class="pure-u-1-4">
+ 		<div>
 			<%= link_to "Other Resources", "/resources", :class => "index-action-button" %>
 		</div>
 	</div>
 </section>
 
-<section id="in-season">
+<section>
 	<h2>Popular Searches</h2>
-	<div class="pure-g-r vertical-margin">
-		<div class="pure-u-1-3">
+	<ul class="popular-search-list">
+		<li>
 			<%= link_to "/food/23/peaches" do %>
 				<%= image_tag "peaches.jpg", :style => "width: 300px;", :alt => "Peaches" %>
 			<% end %>
-		</div>
-		<div class="pure-u-1-3">
+		</li>
+		
+		<li>
 			<%= link_to "/food/15/beets" do %>
 				<%= image_tag "beets.jpg", :style => "width: 300px;", :alt => "Beets" %>
 			<% end %>
-		</div>
-		<div class="pure-u-1-3">
+		</li>
+		
+		<li>
 			<%= link_to "/food/25/squash" do %>
 				<%= image_tag "squash.jpg", :style => "width: 300px;", :alt => "Squash" %>
 			<% end %>
-		</div>
-	</div>
-	
-	<div class="pure-g-r" style="margin-bottom: 20px; padding-bottom: 30px; border-bottom: 2px solid #bbb;">
-		<div class="pure-u-1-3">
+		</li>
+		
+		<li>
 			<%= link_to "/food/6/cherries" do %>
 				<%= image_tag "cherries.jpg", :style => "width: 300px;", :alt => "Carrots" %>
 			<% end %>
-		</div>
-		<div class="pure-u-1-3">
+		</li>
+		
+		<li>
 			<%= link_to "/food/20/chili-peppers" do %>
 				<%= image_tag "peppers.jpg", :style => "width: 300px;", :alt => "Peppers" %>
 			<% end %>
-		</div>
-		<div class="pure-u-1-3">
+		</li>
+		
+		<li>
 			<%= link_to "/food/7/radishes" do %>
 				<%= image_tag "radishes.jpg", :style => "width: 300px;", :alt => "Radishes" %>
 			<% end %>
-		</div>
-	</div>
+		</li>
+	</ul>
 </section>
-
 <!-- <section id="for-producers">
 	<h2>Getting Involved!</h2>
 	<div class="pure-g-r" style="margin-bottom: 20px;">
