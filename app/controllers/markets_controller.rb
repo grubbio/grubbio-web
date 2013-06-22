@@ -7,31 +7,8 @@ class MarketsController < ApplicationController
   #before_filter :check_for_current_user
 
   def index
-    # search = {}
-    # search[:distance] = params[:distance].present? ? params[:distance] : 10
-    # search[:term] = params[:term].present? ? params[:term] : nil
-    # search[:zip] = params[:zip].present? ? params[:zip] : nil
-    # search[:food] = params[:food].present? ? params[:food] : nil
-    # search[:lat] = params[:lat].present? ? params[:lat] : nil
-    # search[:long] = params[:long].present? ? params[:long] : nil
-
-    # if params[:search].present? || params
     @markets = Market.custom_search(params)
-    # else
-    #   @markets = Market.all
-    # end
-
     @total_count = @markets.length
-    if @markets.first.is_a?(ActiveRecord::Relation)
-      markets_array = []
-      @markets.first.each do |m|
-        # binding.pry
-        markets_array << m
-      end
-      @total_count = markets_array.length
-      @markets = markets_array
-    end
-    #@markets.flatten
     @markets = Kaminari.paginate_array(@markets).page(params[:page])
     respond_with @markets
   end

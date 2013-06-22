@@ -1,23 +1,22 @@
-%br/
-%header{width: '100%'}
+%header
   %h2 Local Farmers Markets
 #market-count
   = "Found #{@total_count} markets"
-  %table{:style => "width: 100%; font-size: 14px;"}
+%table{:style => "width: 100%; font-size: 14px;"}
+  %tr
+    %th
+      Name:
+    %th
+      City, State
+    %th
+      Website:
+  - @markets.each do |market|
     %tr
-      %th
-        Name:
-      %th
-        City, State
-      %th
-        Website:
-    - @markets.each do |market|
-      %tr
-        %td{:style => "width: 60%;"}
-          = link_to market.market_name, market_path(market)
-        %td{:style => "width: 20%;"}
-          = market.city
-          , #{market.state}
-        %td{:style => "width: 20%;"}
-          - if market.website
-            = link_to "website", market.website, target: '_blank'
+      %td{:style => "width: 60%;"}
+        = link_to market.market_name, market_path(market)
+      %td{:style => "width: 20%;"}
+        = market.city
+        , #{market.state}
+      %td{:style => "width: 20%;"}
+        - if market.website
+          = link_to "website", market.website, target: '_blank'
