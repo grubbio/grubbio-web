@@ -49,23 +49,30 @@ class Market < ActiveRecord::Base
       return @markets = self.lat_long_search({lat: params[:lat], long: params[:long]})
     end
     if params[:search].present?
-  		distance = params[:search][:distance]
+  		distance = 10#params[:search][:distance]
       location = params[:search][:location]
       query = params[:search][:query]
-    end
-		if query.present?
-      if location.present?
-        coordinates = Geocoder.coordinates(location)
-        return Market.get_markets_near_me(coordinates[0], coordinates[1], distance).search(query)
-      else
-        return Market.search(query)
-      end
-    elsif location.present?
       coordinates = Geocoder.coordinates(location)
-      return Market.get_markets_near_me(coordinates[0], coordinates[1], distance)
-    else
-      return Market.all
+      location_search = location.present? ? Market.get_markets_near_me(coordinates[0], coordinates[1], distance) : Market.all
+      query_search = query.present? ? Market.search(query) : Market.all
+      loc_ids = location_search.flat_map {|market| market.id}
+      query_ids = query_search.flat_map {|market| market.id.to_i}
+      @markets  = (loc_ids & query_ids).map {|id| Market.find(id)}
+
+
+      return @markets
     end
+		# if location.present? && query.present?
+  #     coordinates = Geocoder.coordinates(location)
+  #     return Market.get_markets_near_me(coordinates[0], coordinates[1], distance).search(query)
+  #   elsif location.present?
+  #     coordinates = Geocoder.coordinates(location)
+  #     return Market.get_markets_near_me(coordinates[0], coordinates[1], distance)
+  #   elsif query.present?
+  #     return Market.search(query)
+  #   else
+  #     return Market.all
+  #   end
 
   	# latlong_markets = []
   	# if query[:lat].present? && query[:long].present?

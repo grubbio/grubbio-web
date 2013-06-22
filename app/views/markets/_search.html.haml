@@ -7,4 +7,6 @@
         = f.input :distance, collection: options_for_select([5, 10, 15, 25, 35, 50], 10)
       .sub-col-split
         = f.input :location, as: :string, input_html: {class: "input-medium"}
-    = f.actions
+    = f.actions do
+      = f.action :submit, :as => :button, html: {id: "submit-search-button"}
+      = f.action :cancel, :as => :link
