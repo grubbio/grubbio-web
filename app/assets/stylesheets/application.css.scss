@@ -68,9 +68,16 @@ h1.logo span {
 	background-color: transparent !important;
 	color: $white;
 	vertical-align: middle;
-	a, a:hover {
+	a {
+		font-family: $lato;
 		color: $white;
-		font-size: .8em;
+		font-size: .7em;
+		text-decoration: none;
+		@include transition(all 0.3s ease-in-out);
+		&:hover {
+			color: $grub-orange-accent;
+			text-decoration: none;
+		}
 	}
 }
 
