@@ -1,17 +1,18 @@
-%nav.main-nav.row-fluid
-	%ul#main-nav
-		%li#logo-nav-item.nav-item
-			%h1.logo
-				= link_to "Grubbio", root_path
-				%span your local source
-		%li#home-nav-item.nav-item.offset2
-			= link_to "Home", root_path
-		%li#markets-nav-item.nav-item
-			= link_to "Markets", markets_path
-		%li#foods-nav-item.nav-item
-			= link_to "Foods", food_path
-		- if current_user.present? && current_user.has_role?("producer")
-			%li#producers-nav-item.nav-item
-				= link_to "Producers", businesses_path
-		%li#help-nav-item.nav-item
-			= link_to "Help", "#"
+%div.wrapper
+	%nav.main-nav.row-fluid
+		%ul#main-nav
+			%li#logo-nav-item.nav-item
+				%h1.logo
+					= link_to "Grubbio", root_path
+					%span your local source
+			%li#home-nav-item.nav-item.offset2
+				= link_to "Home", root_path
+			%li#markets-nav-item.nav-item
+				= link_to "Markets", markets_path
+			%li#foods-nav-item.nav-item
+				= link_to "Foods", food_path
+			- if current_user.present? && current_user.has_role?("producer")
+				%li#producers-nav-item.nav-item
+					= link_to "Producers", businesses_path
+			%li#help-nav-item.nav-item
+				= link_to "Help", "#"

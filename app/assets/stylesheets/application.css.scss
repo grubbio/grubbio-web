@@ -31,31 +31,17 @@
 	zoom: 1; /* IE6&7 */
 }
 
-#wrapper  {
+.wrapper, #wrapper  {
 	max-width: 960px;
 	margin: 0 auto;
 }
 
 #site-head {
-	margin-top:20px;
-	.pre-nav {
-		margin-bottom: 20px;
-		text-align: right;
-	}
-	.pre-nav span {
-		color: $grub-light-gray;
-		a {
-			color: $grub-light-gray;
-			&:hover {
-				color: $grub-orange;
-			}
-		}
-	}
+	border-bottom: 1px solid $grub-orange-accent;
+	background-color: $grub-orange;
 }
 
 nav.main-nav {
-	background: $grub-orange;
-	border-bottom: 1px solid $grub-orange-accent;
 	padding: 10px;
 	vertical-align: middle;
 	color: $white;
