@@ -9,7 +9,7 @@
 		%li#markets-nav-item.nav-item
 			= link_to "Markets", markets_path
 		%li#foods-nav-item.nav-item
-			= link_to "Foods", food_products_path
+			= link_to "Foods", food_path
 		- if current_user.present? && current_user.has_role?("producer")
 			%li#producers-nav-item.nav-item
 				= link_to "Producers", businesses_path
