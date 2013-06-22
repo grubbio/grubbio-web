@@ -49,7 +49,7 @@ class Market < ActiveRecord::Base
       return @markets = self.lat_long_search({lat: params[:lat], long: params[:long]})
     end
     if params[:search].present?
-  		distance = 10#params[:search][:distance]
+  		distance = params[:search][:distance].present? ? params[:search][:distance] : 10
       location = params[:search][:location]
       query = params[:search][:query]
       coordinates = Geocoder.coordinates(location)
