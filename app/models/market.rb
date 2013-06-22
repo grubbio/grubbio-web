@@ -53,14 +53,17 @@ class Market < ActiveRecord::Base
       location = params[:search][:location]
       query = params[:search][:query]
       coordinates = Geocoder.coordinates(location)
+
+      #FIXME: optimize this array creation- don't reinstantiate the Markets from the geocoder search
       location_search = location.present? ? Market.get_markets_near_me(coordinates[0], coordinates[1], distance) : Market.all
       query_search = query.present? ? Market.search(query) : Market.all
       loc_ids = location_search.flat_map {|market| market.id}
       query_ids = query_search.flat_map {|market| market.id.to_i}
       @markets  = (loc_ids & query_ids).map {|id| Market.find(id)}
 
-
       return @markets
+    else
+      return Market.all
     end
 		# if location.present? && query.present?
   #     coordinates = Geocoder.coordinates(location)
