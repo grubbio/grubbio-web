@@ -87,3 +87,15 @@ h1.logo span {
 		font-size: .8em;
 	}
 }
+
+#uber-search {
+	text-align: center;
+	height: 100%;
+	position: relative;
+	form {
+		@include border-radius(8px);
+		width: 100%;
+		padding: 10px 0;
+		margin: 200px 0 200px 0;
+	}
+}

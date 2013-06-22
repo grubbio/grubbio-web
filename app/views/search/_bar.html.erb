@@ -1,8 +1,10 @@
-<form action="/markets" method="get">
-	<fieldset>			
-		<input type="text" id="search_query" name="search[query]" placeholder="I want to find someone who grows...">
-		<input type="text" id="search_location" name="search[location]"placeholder="Zip">
-		
-		<button type="submit" class="pure-button notice">Search</button>
-	</fieldset>
-</form>
+<div id="uber-search">
+	<form action="/markets" method="get" class="form-inline">
+		<fieldset>			
+			<input type="text" id="search_query" name="search[query]" placeholder="I want to find someone who grows..." class="span6">
+			<input type="text" id="search_location" name="search[location]"placeholder="Zip Code" class="span2">
+			
+			<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
+		</fieldset>
+	</form>
+</div>
