@@ -15,3 +15,43 @@
  *= require_self
  *= require_tree .
  */
+
+@import "includes/variables";
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+#wrapper  {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+#site-head .pre-nav span {
+	color: $grub-light-gray;
+	a {
+		color: $grub-light-gray;
+	}
+}
+
+nav.main-nav {
+	background: $grub-orange;
+	border-bottom: 1px solid $grub-orange-accent;
+	padding: 10px;
+}
+
+h1.logo a {
+	color: $white;
+	font-family: $leckerli;
+	vertical-align: middle;
+	text-rendering: optimizeLegibility;
+}
+
+h1.logo span {
+	font-family: $lato;
+	font-size: .4em;
+	vertical-align: middle;
+	color: $white;
+}
+
+.nav-item {
+	background-color: transparent !important;
+}
