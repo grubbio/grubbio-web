@@ -1,9 +1,10 @@
-%nav.main-nav
-	%h1.logo
-		= link_to "Grubbio", root_path
-		%span your local source
+%nav.main-nav.row-fluid
 	%ul#main-nav
-		%li#home-nav-item.nav-item
+		%li#logo-nav-item.nav-item
+			%h1.logo
+				= link_to "Grubbio", root_path
+				%span your local source
+		%li#home-nav-item.nav-item.offset2
 			= link_to "Home", root_path
 		%li#markets-nav-item.nav-item
 			= link_to "Markets", markets_path

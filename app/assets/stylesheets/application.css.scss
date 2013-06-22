@@ -20,15 +20,36 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear:both;
+}
+.clearfix {
+	zoom: 1; /* IE6&7 */
+}
+
 #wrapper  {
 	max-width: 960px;
 	margin: 0 auto;
 }
 
-#site-head .pre-nav span {
-	color: $grub-light-gray;
-	a {
+#site-head {
+	margin-top:20px;
+	.pre-nav {
+		margin-bottom: 20px;
+		text-align: right;
+	}
+	.pre-nav span {
 		color: $grub-light-gray;
+		a {
+			color: $grub-light-gray;
+			&:hover {
+				color: $grub-orange;
+			}
+		}
 	}
 }
 
@@ -36,6 +57,8 @@ nav.main-nav {
 	background: $grub-orange;
 	border-bottom: 1px solid $grub-orange-accent;
 	padding: 10px;
+	vertical-align: middle;
+	color: $white;
 }
 
 h1.logo a {
@@ -43,6 +66,9 @@ h1.logo a {
 	font-family: $leckerli;
 	vertical-align: middle;
 	text-rendering: optimizeLegibility;
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 h1.logo span {
@@ -54,4 +80,10 @@ h1.logo span {
 
 .nav-item {
 	background-color: transparent !important;
+	color: $white;
+	vertical-align: middle;
+	a, a:hover {
+		color: $white;
+		font-size: .8em;
+	}
 }
