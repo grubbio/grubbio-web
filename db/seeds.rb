@@ -7,6 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+#Reset the index for Tire/elasticsearch
+Tire.index 'markets' do
+  delete
+  create
+end
+
 require 'csv'    
 
 csv_text = File.read('db/Export.csv')
@@ -17,20 +23,10 @@ csv.each do |row|
 	if row.to_hash["state"] == "Colorado"
 		puts row.to_hash
 		unless Market.exists?(row.to_hash["fmid"])
-		  Market.create!(row.to_hash)
+  		Market.create!(row.to_hash)
 		end
 	end
 end
-
-#Add indexes for Tire/ElasticSearch
-markets = Market.all
-
-Tire.index 'markets' do
-  delete
-  create
-  import markets
-end
-
 
 %w(Produce Meat Dairy Poultry Processed Seafood Other).each do |category|
   ProductCategory.create(:name => category)
@@ -91,31 +87,31 @@ b.create_business_profile(:address1 => "1500 Wynkoop St.", :city => "Denver", :s
 	b.business_profile.food_products << FoodProduct.find(i)
 end
 
-broken_links = []
+# broken_links = []
 
-markets = Market.all
+# markets = Market.all
 
-markets.each do |market|
-	begin
-		if market.website
-			response = HTTParty.get(market.website)
-			if response.code.to_s != '200'
-				data = {
-					id: market.fmid,
-					url: market.website
-				}
-				broken_links << data
-				puts "#{market.fmid} - BROKEN"
-			else
-				puts "#{market.fmid}"
-			end
-		end
-	rescue
-		puts "rescued?"
-	end
-end
+# markets.each do |market|
+# 	begin
+# 		if market.website
+# 			response = HTTParty.get(market.website)
+# 			if response.code.to_s != '200'
+# 				data = {
+# 					id: market.fmid,
+# 					url: market.website
+# 				}
+# 				broken_links << data
+# 				puts "#{market.fmid} - BROKEN"
+# 			else
+# 				puts "#{market.fmid}"
+# 			end
+# 		end
+# 	rescue
+# 		puts "rescued?"
+# 	end
+# end
 
-puts broken_links
+# puts broken_links
 
 USERS = [	{user_email: "consumer@grubb.io", password: "password", location: "Denver, CO", registration_roles: ["consumer"]},
 					{user_email: "producer@grubb.io", password: "password", location: "Denver, CO", registration_roles: ["producer"]},
@@ -125,21 +121,11 @@ USERS = [	{user_email: "consumer@grubb.io", password: "password", location: "Den
 
 USERS.each do |user|
 	user = User.new(email: user[:user_email], password: user[:password], raw_location: user[:location], registration_roles: user[:registration_roles])
-	# case user.email
-	# when "consumer@grubb.io"
-	# 	user.add_role("consumer")
-	# when "producer@grubb.io"
-	# 	user.add_role("producer")
-	# when "market@grubb.io"
-	# 	user.add_role("market_manager")
-	# when "admin@grubb.io"
-	# 	user.add_role("admin")
-	# end
 	user.save
 end
 
 
-
+Market.index.import Market.all
 
 
 

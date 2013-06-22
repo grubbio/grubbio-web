@@ -3,9 +3,11 @@ class FoodProduct < ActiveRecord::Base
 
   has_many :market_food_products
   has_many :markets, :through => :market_food_product
+  #delegate :market, to: :market_food_products
 
   has_many :seasons
   belongs_to :product_category
+  belongs_to :market, touch: true
 
   def season_status(state)
   	if self.seasons.blank?

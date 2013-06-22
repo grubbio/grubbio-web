@@ -1,8 +1,9 @@
-%section#markets-search-filter
-  = render partial: 'markets/search'
-%section#markets-map
-  = render partial: "markets/map"
-%section#markets-list
+%section#map-search
+  %span#markets-search-filter
+    = render partial: 'markets/search'
+  %span#markets-map
+    = render partial: "markets/map"
+%section#markets-list{width: '100%'}
   = render partial: "markets/list"
 
 = paginate @markets

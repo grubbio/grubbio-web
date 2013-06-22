@@ -15,12 +15,11 @@ class MarketsController < ApplicationController
     # search[:lat] = params[:lat].present? ? params[:lat] : nil
     # search[:long] = params[:long].present? ? params[:long] : nil
 
-    if params[:search].present?
-      search = params[:search]
-      @markets = Market.search(search)
-    else
-      @markets = Market.all
-    end
+    # if params[:search].present? || params
+    @markets = Market.custom_search(params)
+    # else
+    #   @markets = Market.all
+    # end
 
     @total_count = @markets.length
     if @markets.first.is_a?(ActiveRecord::Relation)

@@ -44,6 +44,12 @@ Spork.prefork do
     # config.mock_with :flexmock
     # config.mock_with :rr
 
+    config.include FactoryGirl::Syntax::Methods
+
+    config.color_enabled = true
+    config.order = :random
+    config.formatter = :documentation
+
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

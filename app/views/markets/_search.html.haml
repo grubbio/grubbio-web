@@ -1,20 +1,10 @@
-%form#market-search-form{:action => "/markets/", :method => "get"}
-  %fieldset#market-search-fieldset
-    %span#search-by-location
-      #search-by-distance
-        %label
-          Miles
-        %br
-        %input#market-name-input{:name => "distance", :placeholder => "10", :type => "text"}
-      #search-by-zip
-        %label
-          from
-        %br
-        %input#market-name-input{:name => "zip", :placeholder => "ZIP code or city", :type => "text"}
-    %span#search-by-market
-      %label
-        Filter by market name
-      %br
-      %input#market-name-input{:autocomplete => "off", "data-autocomplete" => "/markets/autocomplete_market_market_name", :name => "search", :placeholder => "Market name", :type => "text"}
-    #market-search-submit
-      %button#market-search-button.pure-button.notice{:type => "submit"} Find it!
+#market-search-container
+  = semantic_form_for :search, url: "/markets", method: :get, html: {id: "market-search-form", class: "form-inline"} do |f|
+
+    = f.inputs name: "Filter markets" do
+      = f.input :query, as: :string
+      .sub-col-split
+        = f.input :distance, collection: options_for_select([5, 10, 15, 25, 35, 50], 10)
+      .sub-col-split
+        = f.input :location, as: :string, input_html: {class: "input-medium"}
+    = f.actions
