@@ -7,6 +7,7 @@ class Market < ActiveRecord::Base
                   :sfmnp, :snap, :soap, :state, :street, :trees, :update_time, :vegetables, :website, :wic, :wic_cash, :wine,
                   :x, :y, :zip, :food_products
 
+  #Denver = 39.7392° N, 104.9842° W
   geocoded_by :full_street_address  # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
@@ -23,25 +24,54 @@ class Market < ActiveRecord::Base
 
   include Tire::Model::Search
   include Tire::Model::Callbacks
+
+
+
+  settings :number_of_shards => 1,
+           :number_of_replicas => 1,
+           :analysis => {
+             :filter => {
+               :market_ngram  => {
+                 "type"     => "EdgeNGram",
+                 "max_gram" => 5,
+                 "min_gram" => 3 }
+             },
+             :analyzer => {
+               :market_analyzer => {
+                  "tokenizer"    => "lowercase",
+                  "filter"       => ["stop", "market_ngram"],
+                  "type"         => "custom" }
+             }
+    } do
   
-  mapping do
-    indexes :market_name, type: 'string', boost: 10, analyzer: 'snowball'
-    indexes :location, type: 'string', boost: 10, analyzer: 'snowball'
-    indexes :schedule, type: 'string', boost: 5, analyzer: 'snowball'
-    indexes :city, type: 'string', boost: 3, analyzer: 'snowball'
-    indexes :state, type: 'string', boost: 3, analyzer: 'snowball'
-    indexes :street, type: 'string', boost: 3, analyzer: 'snowball'
-    indexes :zip, type: 'string', boost: 3, analyzer: 'snowball'
-    indexes :created_at, type: 'date'
- 
-    indexes :food_products  do
-      indexes :name, type: :string, analyzer: 'snowball'
-      indexes :description, type: :string, analyzer: 'snowball'
+    mapping do
+      indexes :market_name, :type => 'string', :store => 'yes', :boost => 100, :analyzer => :market_analyzer
+      indexes :location, type: 'string', boost: 10, analyzer: 'market_analyzer'
+      indexes :city, type: 'string', boost: 3, analyzer: 'market_analyzer'
+      indexes :state, type: 'string', boost: 3, analyzer: 'market_analyzer'
+      indexes :street, type: 'string', boost: 3, analyzer: 'market_analyzer'
+      indexes :zip, type: 'string', boost: 3, analyzer: 'market_analyzer'
+      indexes :food_products do
+        indexes :name, :store => 'yes', :type => 'string', :boost => 100, :analyzer => :market_analyzer
+        indexes :description, type: 'string', analyzer: 'market_analyzer'
+      end
     end
   end
 
   def to_indexed_json
     to_json( include: [:food_products] )
+  end
+
+  def self.search(query)
+    tire.search do
+      query { string "#{query}", :default_operator => :AND, :fields => ['market_name', 'location', 'city', 'state', 'street', 'zip', 'name', 'description'] }
+      # highlight :attachment
+      # page = (options[:page] || 1).to_i
+      # search_size = options[:per_page] || DEFAULT_PAGE_SIZE
+      # from (page -1) * search_size
+      # size search_size
+      sort { by :_score, :desc }
+    end
   end
 
 	def self.custom_search(params)
