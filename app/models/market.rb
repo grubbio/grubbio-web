@@ -78,10 +78,10 @@ class Market < ActiveRecord::Base
     if params[:lat].present? && params[:long].present?
       return @markets = self.lat_long_search({lat: params[:lat], long: params[:long]})
     end
-    if params[:search].present?
-  		distance = params[:search][:distance].present? ? params[:search][:distance] : 10
-      location = params[:search][:location]
-      query = params[:search][:query]
+    if params[:market_search].present?
+  		distance = params[:market_search][:distance].present? ? params[:market_search][:distance] : 10
+      location = params[:market_search][:location]
+      query = params[:market_search][:query]
       coordinates = Geocoder.coordinates(location)
 
       #FIXME: optimize this array creation- don't reinstantiate the Markets from the geocoder search

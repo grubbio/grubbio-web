@@ -8,6 +8,14 @@ class MarketsController < ApplicationController
 
   def index
     @markets = Market.custom_search(params)
+    if params[:market_search].present?
+      @search = { query: params[:market_search]["query"],
+                distance: params[:market_search]["distance"],
+                location: params[:market_search]["location"]
+      }
+    else
+      @search = nil
+    end
     @total_count = @markets.length
     @markets = Kaminari.paginate_array(@markets).page(params[:page])
     respond_with @markets
