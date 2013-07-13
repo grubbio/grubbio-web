@@ -1,27 +1,40 @@
-#market-search-container
-  label
-    width: auto
-  .market-search-field
-    input
-      margin-bottom: 0em
-  select#market_search_distance
-    width: 80%
-#markets-search-filter
-  width: 25%
-  display: inline-block
 #markets-map
   width: auto
+  margin-left: 5%
   display: inline-block
+  float: left
 #markets-list
   width: 90%
   margin: auto
+  margin-left: 6%
+  max-width: 1000px
+  display: block
 #market-list-table
   th
     text-align: left
-#markets-map
-  vertical-align: top
 #search-map-container
+  float: left
   margin-left: 5%
-#submit-search-button
-  width: auto
-  padding: 5px 10px 5px 10px
+  #market-search-container
+    width: 25%
+    max-width: 250px
+    height: 400px
+    display: inline-block
+    float: left
+    label
+      width: auto
+    #market-search-form
+      height: 400px
+      margin: 10px
+      padding: 0px 0px 0px 10px
+      .market-search-field
+        input
+          margin-bottom: 0em
+      select#market_search_distance
+        width: 80%
+      #submit-search-button
+        width: auto
+        padding: 5px 10px 5px 10px
+  #markets-map
+    vertical-align: top
+    margin: 10px

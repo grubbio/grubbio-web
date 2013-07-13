@@ -16,7 +16,7 @@
         %th
           Website:
       - @markets.each do |market|
-        %tr
+        %tr.market-result
           %td
             = link_to market.market_name, market_path(market)
           %td
