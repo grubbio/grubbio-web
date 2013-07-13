@@ -1,9 +1,7 @@
-#map-search
+.row-fluid#search-map-container
   #markets-search-filter
     = render partial: 'markets/search'
   #markets-map
     = render partial: "markets/map"
-#markets-list
+#markets-list.row-fluid
   = render partial: "markets/list"
-
-= paginate @markets

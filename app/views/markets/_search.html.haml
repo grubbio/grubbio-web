@@ -1,13 +1,21 @@
 #market-search-container
-  = semantic_form_for :search, url: "/markets", method: :get, html: {id: "market-search-form", class: "form-inline"} do |f|
+  = semantic_form_for :market_search, url: "/markets", method: :get, html: {id: "market-search-form", class: "well"} do |f|
 
-    = f.inputs name: "Filter markets" do
-      = f.input :query, as: :string
-      .sub-col-split
-        = f.input :distance, collection: options_for_select([5, 10, 15, 25, 35, 50], 10)
-      .sub-col-split
-        = f.input :location, as: :string, input_html: {class: "input-medium"}
+    = f.inputs name: "Food & Market Search" do
+      #market-search-query-input.market-search-field
+        %label.label
+          I'm looking for
+        - @query_value = (@search.present? && @search[:query].present?) ? sanitize(@search[:query]) : nil
+        = f.input :query, as: :string, input_html: {class: "input-large", placeholder: "Food, market name, etc.", value: @query_value}, required: false, label: false
+      #market-search-distance-input.market-search-field
+        %label.label
+          within
+        - @distance_value = (@search.present? && @search[:distance].present?) ? sanitize(@search[:distance]) : "10"
+        = f.input :distance, as: :select, collection: options_for_select({"5 miles" => "5", "10 miles" => "10", "15 miles" => "15", "25 miles" => "25", "50 miles" => "50"}, @distance_value), label: false, input_html: {class: "input-small"}, :include_blank => false
+      #market-search-location-input.market-search-field
+        %label.label
+          of
+        - @location_value = (@search.present? && @search[:location].present?) ? sanitize(@search[:location]) : nil
+        = f.input :location, as: :string, input_html: {class: "input-medium", placeholder: "city, state or ZIP", value: @location_value}, label: 'of', required: false, label: false
     = f.actions do
-      = f.action :submit, :as => :button, html: {id: "submit-search-button"}
-      = f.action :cancel, :as => :link
-
+      = f.submit "Find it", id: "submit-search-button", class: "btn btn-primary"
