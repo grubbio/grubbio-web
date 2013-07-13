@@ -1,4 +1,3 @@
-@javascript
 Feature:  Markets
   As a consumer of only the finest local produce
   I want to be able to find a farmer's market nearby carrying the food I desire
@@ -20,6 +19,7 @@ Feature:  Markets
     And I press "Find it"
     Then I should see 1 element kind of "tr.market-result"
 
+  #FIXME: need to improve DB seeding so it's consistent- currently random 
   Scenario: Searching for a market by food product and zip code
     And I fill in "market_search_query" with "Apple"
     And I fill in "market_search_location" with "80231"
