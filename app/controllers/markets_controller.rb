@@ -17,7 +17,7 @@ class MarketsController < ApplicationController
       @search = nil
     end
     @total_count = @markets.length
-    @markets = Kaminari.paginate_array(@markets).page(params[:page])
+    @markets = Kaminari.paginate_array(@markets.present? ? @markets : []).page(params[:page])
     respond_with @markets
   end
 
