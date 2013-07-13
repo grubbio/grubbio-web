@@ -25,6 +25,9 @@ class Market < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
+  after_save do
+    update_index
+  end
 
 
   settings :number_of_shards => 1,

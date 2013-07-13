@@ -8,16 +8,17 @@
 
 
 #Reset the index for Tire/elasticsearch
-Tire.index 'markets' do
-  delete
-  create
-end
+# Tire.index 'markets' do
+#   delete
+#   create
+# end
+Market.index.delete if Market.index.present?
+Market.create_elasticsearch_index
 
 require 'csv'    
 
 csv_text = File.read('db/Export.csv')
 csv_text.encode('UTF-8')
-#puts "text: #{csv_text}"
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
 	if row.to_hash["state"] == "Colorado"
@@ -124,9 +125,7 @@ USERS.each do |user|
 	user.save
 end
 
-
-Market.index.import Market.all
-
+Market.import
 
 
 
