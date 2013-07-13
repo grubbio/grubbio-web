@@ -22,12 +22,10 @@ Feature:  Markets
   #FIXME: need to improve DB seeding so it's consistent- currently random 
   Scenario: Searching for a market by food product and zip code
     And I fill in "market_search_query" with "Apple"
-    And I fill in "market_search_location" with "80231"
     And I press "Find it"
-    Then I should see 1 element kind of "tr.market-result"
+    Then I should see 10 element kind of "tr.market-result"
 
   Scenario: Searching for a market by food product (stemming) and zip code
     And I fill in "market_search_query" with "Appling"
-    And I fill in "market_search_location" with "80231"
     And I press "Find it"
-    Then I should see 1 element kind of "tr.market-result"
+    Then I should see 10 element kind of "tr.market-result"
