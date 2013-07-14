@@ -20,12 +20,18 @@ Feature:  Markets
     Then I should see 1 element kind of "tr.market-result"
 
   #FIXME: need to improve DB seeding so it's consistent- currently random 
-  Scenario: Searching for a market by food product and zip code
+  Scenario: Searching for a market by food product
     And I fill in "market_search_query" with "Apple"
     And I press "Find it"
     Then I should see 10 element kind of "tr.market-result"
 
-  Scenario: Searching for a market by food product (stemming) and zip code
+  Scenario: Searching for a market by food product (stemming)
     And I fill in "market_search_query" with "Appling"
     And I press "Find it"
     Then I should see 10 element kind of "tr.market-result"
+
+  Scenario: Viewing a market
+    And I fill in "market_search_query" with "apple"
+    And I press "Find it"
+    And I click the first market in the results
+    Then I should see the Market Details page
