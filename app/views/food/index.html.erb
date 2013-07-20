@@ -3,25 +3,11 @@
 </section>
 
 <section class="wrapper row">
-  <h2>Food List</h2>
-  <table>
-    <tr>
-      <th>
-        Name:
-      </th>
-    </tr>
-    <% @foods.each do |food| %>
-      <tr>
-        <td style="width: 60%;">
-          <%= link_to food.name.pluralize, "/food/#{food.id}/#{food.name.pluralize.parameterize}" %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</section>
+  <h2>Common Local Foods</h2>
 
-<section class="row">
-  <%= paginate @foods %>
-  <br><br>
-  (<%= FoodProduct.count %> total)
+  <ul>
+    <% @foods.each do |food| %>
+      <li><%= link_to food.name, food_product_path(food) %></li>
+    <% end %>
+  </ol>
 </section>
