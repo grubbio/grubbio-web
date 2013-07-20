@@ -1,25 +1,6 @@
 <%= render partial: "search/bar" %>
 
-<!-- quick links to items for people who don't want to search -->
-<section id="actions" class="wrapper">
-	<div>
-		<div>
-			<%= link_to "Farmers Markets", markets_path, :class => "index-action-button" %>
-		</div>
-		<div
-			<%= link_to "Food Lists", "/food", :class => "index-action-button" %>
-		</div>
-<!-- 		<div class="pure-u-1-4">
-			<%#= link_to "Producers Directory", businesses_path, :class => "index-action-button" %>
-		</div>
- -->		
- 		<div>
-			<%= link_to "Other Resources", "/resources", :class => "index-action-button" %>
-		</div>
-	</div>
-</section>
-
-<section class="wrapper">
+<section class="wrapper row">
 	<h2>Popular Searches</h2>
 	<ul class="popular-search-list">
 		<li>
@@ -27,31 +8,31 @@
 				<%= image_tag "peaches.jpg", :style => "width: 300px;", :alt => "Peaches" %>
 			<% end %>
 		</li>
-		
+
 		<li>
 			<%= link_to "/food/15/beets" do %>
 				<%= image_tag "beets.jpg", :style => "width: 300px;", :alt => "Beets" %>
 			<% end %>
 		</li>
-		
+
 		<li>
 			<%= link_to "/food/25/squash" do %>
 				<%= image_tag "squash.jpg", :style => "width: 300px;", :alt => "Squash" %>
 			<% end %>
 		</li>
-		
+
 		<li>
 			<%= link_to "/food/6/cherries" do %>
-				<%= image_tag "cherries.jpg", :style => "width: 300px;", :alt => "Carrots" %>
+				<%= image_tag "cherries.jpg", :style => "width: 300px;", :alt => "Cherries" %>
 			<% end %>
 		</li>
-		
+
 		<li>
 			<%= link_to "/food/20/chili-peppers" do %>
 				<%= image_tag "peppers.jpg", :style => "width: 300px;", :alt => "Peppers" %>
 			<% end %>
 		</li>
-		
+
 		<li>
 			<%= link_to "/food/7/radishes" do %>
 				<%= image_tag "radishes.jpg", :style => "width: 300px;", :alt => "Radishes" %>
