@@ -21,7 +21,7 @@ csv_text = File.read('db/Export.csv')
 csv_text.encode('UTF-8')
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
-	if row.to_hash["state"] == "Colorado"
+	if row.to_hash["state"] == "Colorado" || row.to_hash["state"] == "District of Columbia"
 		puts row.to_hash
 		unless Market.exists?(row.to_hash["fmid"])
   		Market.create!(row.to_hash)
